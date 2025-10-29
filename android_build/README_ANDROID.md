@@ -14,6 +14,10 @@ Bu klasör, Klo. oyununun Android APK'sını oluşturmak için gerekli dosyalar�
 ### 1. Buildozer Kurulumu
 
 ```bash
+# Önce setuptools kurun (Python 3.12 için gerekli - distutils içerir)
+pip install setuptools
+
+# Sonra buildozer'ı kurun
 pip install buildozer
 ```
 
@@ -101,6 +105,20 @@ Buildozer config'de `android.sdk_path` ve `android.ndk_path` kullanarak manuel y
 
 ### Pygame import hatası
 `requirements` listesinde `pygame2` kullanıldığından emin olun. Pygame2 Android için gerekli.
+
+### ModuleNotFoundError: No module named 'distutils' (Python 3.12)
+Python 3.12'de `distutils` modülü kaldırılmıştır. Çözüm:
+
+```bash
+# Virtual environment içinde
+source venv/bin/activate
+pip install setuptools
+```
+
+Alternatif olarak sistem paketi kurun (Ubuntu/Debian):
+```bash
+sudo apt install python3-distutils python3-setuptools
+```
 
 ### Dosya bulunamadı hataları
 `source.dir` değerinin doğru olduğundan emin olun. Varsayılan olarak `..` (üst dizin) kullanılır.

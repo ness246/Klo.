@@ -23,6 +23,9 @@
 
 4. **Buildozer Kur:**
    ```bash
+   # Önce setuptools kurun (Python 3.12 için gerekli)
+   pip install setuptools
+   # Sonra buildozer
    pip install buildozer
    ```
 
@@ -35,6 +38,9 @@
 
 1. **Buildozer Kur:**
    ```bash
+   # Önce setuptools kurun (Python 3.12 için gerekli)
+   pip install setuptools
+   # Sonra buildozer
    pip install buildozer
    ```
 
@@ -69,6 +75,11 @@ android_build/bin/klotski-1.0-*.apk
 - En az **5GB** boş disk alanı gereklidir
 
 ## 🔧 Sorun Giderme
+
+### Python 3.12: "No module named 'distutils'"
+```bash
+pip install setuptools
+```
 
 Detaylı bilgi için: `TEST_MOBILE.md` ve `README_ANDROID.md`
 
