@@ -311,7 +311,7 @@ android.add_assets = assets,levels
 android.add_src =
 
 # (str) Android main program entry point (default ok for Kivy-based apps)
-android.entrypoint = org.kivy.android.PythonActivity
+#android.entrypoint = org.kivy.android.PythonActivity
 
 # (str) Android app theme, default is ok for Android AppCompat
 # android.apptheme = "@android:style/Theme.NoTitleBar"
