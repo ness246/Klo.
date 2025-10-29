@@ -1,6 +1,5 @@
 # main.py (sürükleme iyileştirilmiş tam dosya)
 import os, sys, time, json, math
-from collections import deque
 import pygame
 from pygame.locals import *
 
@@ -29,25 +28,27 @@ FPS = 60
 DRAG_THRESHOLD = 8   # px to decide axis lock
 HITBOX_PADDING = 8   # px for easier selection
 
-# Colors / styling (dark framed look similar to your reference)
-BG = (18, 20, 30)
-FRAME_COLOR = (245, 245, 250)
-INNER_BG = (12, 14, 20)
-BOARD_BG = (8, 10, 14)
-GRID_LINE = (30, 30, 40)
-TEXT = (230, 230, 240)
+# Retro 8-bit/16-bit Colors & Styling (Eye-friendly version)
+# Atari/NES/SNES inspired palette - Softer, less eye-straining
+BG = (20, 25, 20)              # Dark gray-green background (softer than pure black)
+FRAME_COLOR = (0, 180, 100)   # Softer green frame
+INNER_BG = (25, 30, 22)       # Slightly lighter green tint
+BOARD_BG = (30, 35, 25)       # Brighter green tint for board
+GRID_LINE = (40, 80, 50)      # Darker, softer green grid lines
+TEXT = (0, 200, 120)          # Softer green text (less harsh than pure neon)
 
-# Minimalist siyah-beyaz palette
+# Retro 8-bit/16-bit Palette (Eye-friendly, muted but still retro)
+# Colors are toned down but maintain classic game aesthetic
 PALETTE = {
-    "T": (255, 255, 255),      # Beyaz - hedef blok
-    "red": (60, 60, 60),       # Koyu gri
-    "magenta": (80, 80, 80),   # Gri
-    "lime": (100, 100, 100),   # Açık gri
-    "violet": (50, 50, 50),    # Çok koyu gri
-    "teal": (70, 70, 70),      # Orta gri
-    "orange": (90, 90, 90),    # Açık gri
-    "blue": (40, 40, 40),      # Koyu gri
-    "coral": (110, 110, 110)   # Açık gri
+    "T": (220, 200, 80),       # Softer yellow - target block (golden)
+    "red": (200, 80, 80),      # Muted retro red
+    "magenta": (200, 120, 200), # Softer magenta/pink
+    "lime": (100, 200, 100),   # Muted lime green
+    "violet": (150, 100, 200), # Softer purple/violet
+    "teal": (80, 200, 160),    # Muted cyan/teal
+    "orange": (220, 150, 80),  # Softer orange
+    "blue": (80, 120, 200),    # Muted blue
+    "coral": (200, 120, 120)   # Soft pink/coral
 }
 
 BASE_DIR = os.path.dirname(__file__)
@@ -99,6 +100,7 @@ def get_text(key):
     translations = {
         "TR": {
             "menu_play": "Oyna",
+            "menu_howto": "Nasıl Oynanır",
             "menu_settings": "Ayarlar",
             "menu_exit": "Çıkış",
             "settings_title": "Ayarlar",
@@ -108,6 +110,16 @@ def get_text(key):
             "settings_turkish": "Türkçe",
             "settings_english": "English",
             "settings_back": "Geri",
+            "howto_title": "Nasıl Oynanır",
+            "howto_objective": "Amaç",
+            "howto_objective_text": "Hedef bloğu (2x2 kırmızı blok) çıkışa (EXIT) taşıyın!",
+            "howto_controls": "Kontroller",
+            "howto_mouse": "FARE: Blokları sürükleyip bırakarak hareket ettirin",
+            "howto_u": "U: Son hamleyi geri al",
+            "howto_r": "R: Yeniden başla",
+            "howto_esc": "ESC: Ana menüye dön",
+            "howto_f11": "F11: Tam ekran modu",
+            "howto_back": "Geri",
             "game_moves": "Hamle",
             "game_time": "Süre",
             "game_exit": "EXIT",
@@ -118,6 +130,7 @@ def get_text(key):
         },
         "EN": {
             "menu_play": "Play",
+            "menu_howto": "How to Play",
             "menu_settings": "Settings",
             "menu_exit": "Exit",
             "settings_title": "Settings",
@@ -127,6 +140,16 @@ def get_text(key):
             "settings_turkish": "Türkçe",
             "settings_english": "English",
             "settings_back": "Back",
+            "howto_title": "How to Play",
+            "howto_objective": "Objective",
+            "howto_objective_text": "Move the target block (2x2 red block) to the exit (EXIT)!",
+            "howto_controls": "Controls",
+            "howto_mouse": "MOUSE: Drag and drop blocks to move them",
+            "howto_u": "U: Undo last move",
+            "howto_r": "R: Restart",
+            "howto_esc": "ESC: Return to main menu",
+            "howto_f11": "F11: Fullscreen mode",
+            "howto_back": "Back",
             "game_moves": "Moves",
             "game_time": "Time",
             "game_exit": "EXIT",
@@ -167,8 +190,6 @@ def _make_tone(path, freq=440, dur_ms=120, vol=0.10, sr=44100, wave_type='square
 # 8-bit tarzı yumuşak sesler oluştur
 if not os.path.exists(os.path.join(AUDIO_DIR, "move.wav")):
     _make_tone(os.path.join(AUDIO_DIR, "move.wav"), freq=500, dur_ms=80, vol=0.25, wave_type='square')
-if not os.path.exists(os.path.join(AUDIO_DIR, "hint.wav")):
-    _make_tone(os.path.join(AUDIO_DIR, "hint.wav"), freq=660, dur_ms=150, vol=0.07, wave_type='triangle')
 if not os.path.exists(os.path.join(AUDIO_DIR, "click.wav")):
     _make_tone(os.path.join(AUDIO_DIR, "click.wav"), freq=350, dur_ms=60, vol=0.20, wave_type='square')
 if not os.path.exists(os.path.join(AUDIO_DIR, "complete.wav")):
@@ -198,7 +219,6 @@ def safe_load_sound(path):
         return None
 
 SND_MOVE = safe_load_sound(os.path.join(AUDIO_DIR, "move.wav"))
-SND_HINT = safe_load_sound(os.path.join(AUDIO_DIR, "hint.wav"))
 SND_COMPLETE = safe_load_sound(os.path.join(AUDIO_DIR, "complete.wav"))
 SND_ERROR = safe_load_sound(os.path.join(AUDIO_DIR, "error.wav"))
 SND_CLICK = safe_load_sound(os.path.join(AUDIO_DIR, "click.wav"))
@@ -379,12 +399,54 @@ class Block:
         self.pixel_target = (self.rect.x, self.rect.y)
 
     def draw(self, surf, dragging=False, preview=False):
-        pygame.draw.rect(surf, self.color, self.rect, border_radius=12)
+        # Retro block drawing with eye-friendly muted colors
+        # Apply subtle darkening for less eye strain while maintaining retro look
+        base_color = self.color
+        # Slightly darken colors for better viewing comfort
+        muted_color = (max(0, base_color[0] - 15), max(0, base_color[1] - 15), max(0, base_color[2] - 15))
+        
+        pygame.draw.rect(surf, muted_color, self.rect, border_radius=6)
+        
+        # Softer retro border - less bright, more subtle
+        if self.is_target:
+            border_color = (200, 180, 100)  # Softer golden yellow
+        else:
+            # Increase brightness slightly for border but keep it muted
+            border_brighter = (min(255, muted_color[0] + 40), min(255, muted_color[1] + 40), min(255, muted_color[2] + 40))
+            border_color = border_brighter
+        
+        pygame.draw.rect(surf, border_color, self.rect, width=2, border_radius=6)
+        
         if preview:
-            pygame.draw.rect(surf, (255,255,255), self.rect, width=3, border_radius=12)
+            # Very subtle glow for preview
+            pygame.draw.rect(surf, (0, 140, 80), self.rect, width=2, border_radius=6)
+        
         if dragging:
-            pygame.draw.rect(surf, (255,255,255), self.rect, width=2, border_radius=12)
-        text_color = (20,20,20) if sum(self.color)/3 > 140 else (250,250,250)
+            # Subtle glow when dragging
+            for i in range(2):
+                glow_rect = pygame.Rect(self.rect.x - i, self.rect.y - i, self.rect.w + 2*i, self.rect.h + 2*i)
+                glow_alpha = max(0, 60 - i*30)
+                glow_surf = pygame.Surface((glow_rect.w, glow_rect.h), pygame.SRCALPHA)
+                # Use border color with alpha for subtle glow
+                if len(border_color) >= 3:
+                    glow_color_rgba = (*border_color[:3], glow_alpha)
+                else:
+                    glow_color_rgba = (*border_color, glow_alpha)
+                pygame.draw.rect(glow_surf, glow_color_rgba, (0, 0, glow_rect.w, glow_rect.h), border_radius=6 + i)
+                surf.blit(glow_surf, glow_rect.topleft)
+            pygame.draw.rect(surf, border_color, self.rect, width=2, border_radius=6)
+        
+        # Text with good contrast - all blocks use light text for consistency
+        # Only use dark text for very bright blocks (threshold increased)
+        avg_brightness = sum(muted_color)/3
+        if avg_brightness > 190:  # Only very bright blocks get dark text
+            text_color = (20, 20, 20)  # Very dark gray instead of pure black
+        else:
+            text_color = (240, 240, 240)  # Light text for all other blocks (consistent with others)
+        
+        # Subtle shadow for retro effect - always use dark shadow for readability
+        shadow_surf = font.render(self.id, True, (20, 20, 20))
+        surf.blit(shadow_surf, (self.rect.x+9, self.rect.y+9))
         draw_text(surf, self.id, (self.rect.x+8, self.rect.y+8), font, color=text_color)
 
     def animate_towards_pixel_target(self, speed=1200, dt=1/60.0):
@@ -489,50 +551,6 @@ class Board:
 # ---------------------------
 # Solver (BFS)
 # ---------------------------
-def solve(level):
-    cols = level["grid"]["cols"]; rows = level["grid"]["rows"]
-    blocks = level["blocks"]
-    start = {b["id"]:(b["x"],b["y"]) for b in blocks}
-    dims = {b["id"]:(b["w"],b["h"]) for b in blocks}
-    target_id = None
-    for b in blocks:
-        if b.get("type")=="target": target_id=b["id"]; break
-    def encode(pos): return tuple(sorted((k,pos[k][0],pos[k][1]) for k in pos))
-    q=deque(); q.append((start,[])); seen=set([encode(start)]); maxsteps=200000; steps=0
-    while q:
-        positions, path = q.popleft(); steps+=1
-        if steps>maxsteps: return None
-        tx,ty = positions[target_id]
-        if (tx,ty)==tuple(level["exit"]): return path
-        occ=[[None]*cols for _ in range(rows)]
-        for bid,(bx,by) in positions.items():
-            bw,bh = dims[bid]
-            for yy in range(by, by+bh):
-                for xx in range(bx, bx+bw):
-                    occ[yy][xx]=bid
-        for bid,(bx,by) in list(positions.items()):
-            bw,bh = dims[bid]
-            for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)]:
-                nbx, nby = bx+dx, by+dy
-                if nbx<0 or nby<0 or nbx+bw>cols or nby+bh>rows: continue
-                valid=True
-                for yy in range(nby, nby+bh):
-                    for xx in range(nbx, nbx+bw):
-                        if occ[yy][xx] is not None and occ[yy][xx]!=bid:
-                            valid=False; break
-                    if not valid: break
-                if not valid: continue
-                newpos = dict(positions); newpos[bid] = (nbx,nby)
-                key = encode(newpos)
-                if key in seen: continue
-                seen.add(key)
-                q.append((newpos, path + [(bid,dx,dy)]))
-    return None
-
-def compute_hint(level):
-    path = solve(level)
-    if path and len(path)>0: return path[0], path
-    return None, None
 
 # ---------------------------
 # Game & UI
@@ -606,8 +624,13 @@ def point_in_block_with_padding(block, px, py):
     return r.collidepoint(px, py)
 
 def pixel_to_grid_center(px, py, block):
+    # Convert pixel position (top-left corner of block) to grid position
+    # Account for block dimensions by offsetting from center
     gx = int((px - MARGIN) // CELL_W)
     gy = int((py - MARGIN - 120) // CELL_H)
+    # For blocks larger than 1x1, adjust so preview shows at correct top-left position
+    # If we get center, we need to offset by half the block size
+    # But since we're using top-left position now, this should be correct
     gx = max(0, min(game.board.cols - block.w, gx))
     gy = max(0, min(game.board.rows - block.h, gy))
     return gx, gy
@@ -627,8 +650,9 @@ while running:
             if ev.type == MOUSEBUTTONDOWN and ev.button == 1:
                 mx, my = transform_mouse_pos(ev.pos)
                 play_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 - 100, 250, 70)
-                settings_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 - 10, 250, 70)
-                exit_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 80, 250, 70)
+                howto_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 - 25, 250, 70)
+                settings_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 50, 250, 70)
+                exit_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 125, 250, 70)
                 
                 if play_btn.collidepoint(mx, my):
                     play_sound(SND_CLICK)
@@ -639,6 +663,10 @@ while running:
                         game.paused_duration += pause_duration
                         game.pause_start_time = None  # Duraklama bitirdi
                     game.state = "playing"
+                elif howto_btn.collidepoint(mx, my):
+                    play_sound(SND_CLICK)
+                    game.previous_state = "menu"
+                    game.state = "howto"
                 elif settings_btn.collidepoint(mx, my):
                     play_sound(SND_CLICK)
                     game.previous_state = "menu"  # Menüden ayarlara git
@@ -648,10 +676,13 @@ while running:
             elif ev.type == MOUSEMOTION:
                 mx, my = transform_mouse_pos(ev.pos)
                 play_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 - 100, 250, 70)
-                settings_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 - 10, 250, 70)
-                exit_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 80, 250, 70)
+                howto_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 - 25, 250, 70)
+                settings_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 50, 250, 70)
+                exit_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 125, 250, 70)
                 if play_btn.collidepoint(mx, my):
                     game.hovered_button = "play"
+                elif howto_btn.collidepoint(mx, my):
+                    game.hovered_button = "howto"
                 elif settings_btn.collidepoint(mx, my):
                     game.hovered_button = "settings"
                 elif exit_btn.collidepoint(mx, my):
@@ -726,6 +757,27 @@ while running:
                     game.settings_slider = None
                     settings.save()
             continue
+        
+        # Nasıl Oynanır state kontrolü
+        elif game.state == "howto":
+            if ev.type == KEYDOWN:
+                if ev.key == K_ESCAPE:
+                    game.state = game.previous_state  # Geri dön
+                elif ev.key == K_F11:
+                    # Fullscreen toggle
+                    game.fullscreen = not game.fullscreen
+                    if game.fullscreen:
+                        window = pygame.display.set_mode((0, 0), FULLSCREEN)
+                    else:
+                        window = pygame.display.set_mode((SCREEN_W, SCREEN_H))
+            elif ev.type == MOUSEBUTTONDOWN and ev.button == 1:
+                mx, my = transform_mouse_pos(ev.pos)
+                # Geri butonu
+                back_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 170, 250, 70)
+                if back_btn.collidepoint(mx, my):
+                    play_sound(SND_CLICK)
+                    game.state = game.previous_state  # Geri dön
+            continue
 
         elif ev.type == KEYDOWN:
             if ev.key == K_F11:
@@ -744,39 +796,6 @@ while running:
                 game.restart()
             elif ev.key == K_u:
                 game.board.undo()
-            elif ev.key == K_h:
-                move,path = compute_hint(game.level)
-                if move:
-                    bid, dx, dy = move
-                    blk = game.board.blocks[bid]
-                    origx, origy = blk.x, blk.y
-                    steps = 10
-                    for s in range(steps):
-                        t = (s+1)/steps
-                        blk.rect.x = int(MARGIN + (origx + dx * t) * CELL_W)
-                        blk.rect.y = int(MARGIN + 120 + (origy + dy * t) * CELL_H)
-                        # redraw minimal UI
-                        screen.fill(BG)
-                        pygame.draw.rect(screen, FRAME_COLOR, (8,8,SCREEN_W-16, SCREEN_H-16), border_radius=8)
-                        pygame.draw.rect(screen, INNER_BG, (18,18,SCREEN_W-36, SCREEN_H-36), border_radius=6)
-                        pygame.draw.rect(screen, BOARD_BG, (MARGIN, MARGIN+120, BOARD_W, BOARD_H), border_radius=10)
-                        # grid
-                        for i in range(1, game.board.cols):
-                            x = MARGIN + i*CELL_W
-                            pygame.draw.line(screen, GRID_LINE, (x, MARGIN+120), (x, MARGIN+120+BOARD_H), 2)
-                        for j in range(1, game.board.rows):
-                            y = MARGIN+120 + j*CELL_H
-                            pygame.draw.line(screen, GRID_LINE, (MARGIN, y), (MARGIN+BOARD_W, y), 2)
-                        for b in game.board.blocks.values():
-                            if b is not blk:
-                                b.draw(screen)
-                        blk.draw(screen, dragging=True)
-                        present()
-                        clock.tick(FPS)
-                    moved = game.board.slide_one(bid, dx, dy, record=True)
-                    if moved:
-                        play_sound(SND_HINT)
-                        game.moves += 1
 
         elif ev.type == MOUSEBUTTONDOWN and ev.button == 1:
             mx,my = transform_mouse_pos(ev.pos)
@@ -848,8 +867,8 @@ while running:
                     b.rect.y = max(min_y, min(max_y, b.rect.y))
                 
                 b.pixel_target = (b.rect.x, b.rect.y)
-                # Preview hesapla
-                pgx, pgy = pixel_to_grid_center(b.rect.centerx, b.rect.centery, b)
+                # Preview hesapla - use top-left corner instead of center for correct positioning
+                pgx, pgy = pixel_to_grid_center(b.rect.x, b.rect.y, b)
                 game.preview_cell = (b.id, pgx, pgy)
 
         elif ev.type == MOUSEBUTTONUP and ev.button == 1:
@@ -940,28 +959,54 @@ while running:
         
         menu_btn_font = pygame.font.Font(bytesized_font_path, 32) if os.path.exists(bytesized_font_path) else pygame.font.Font(None, 32)
         
-        # "Oyna" butonu
+        # "Oyna" butonu - Retro styled (softer)
         play_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 - 100, 250, 70)
-        play_color = (80, 80, 80) if game.hovered_button == "play" else (60, 60, 60)
-        pygame.draw.rect(screen, play_color, play_btn, border_radius=15)
-        pygame.draw.rect(screen, (255,255,255), play_btn, width=3, border_radius=15)
-        btn_text = menu_btn_font.render(get_text("menu_play"), True, TEXT)
+        play_color = (0, 140, 80) if game.hovered_button == "play" else (0, 90, 50)
+        pygame.draw.rect(screen, play_color, play_btn, border_radius=8)
+        # Softer border
+        pygame.draw.rect(screen, (0, 180, 100), play_btn, width=3, border_radius=8)
+        if game.hovered_button == "play":
+            # Subtle glow effect
+            for i in range(2):
+                glow_rect = pygame.Rect(play_btn.x - i, play_btn.y - i, play_btn.w + 2*i, play_btn.h + 2*i)
+                pygame.draw.rect(screen, (0, 160, 90), glow_rect, width=1, border_radius=8)
+        btn_text = menu_btn_font.render(get_text("menu_play"), True, (0, 200, 120))
         screen.blit(btn_text, (play_btn.centerx - btn_text.get_width()//2, play_btn.centery - btn_text.get_height()//2))
         
+        # "Nasıl Oynanır" butonu
+        howto_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 - 25, 250, 70)
+        howto_color = (0, 140, 80) if game.hovered_button == "howto" else (0, 90, 50)
+        pygame.draw.rect(screen, howto_color, howto_btn, border_radius=8)
+        pygame.draw.rect(screen, (0, 180, 100), howto_btn, width=3, border_radius=8)
+        if game.hovered_button == "howto":
+            for i in range(2):
+                glow_rect = pygame.Rect(howto_btn.x - i, howto_btn.y - i, howto_btn.w + 2*i, howto_btn.h + 2*i)
+                pygame.draw.rect(screen, (0, 160, 90), glow_rect, width=1, border_radius=8)
+        btn_text_howto = menu_btn_font.render(get_text("menu_howto"), True, (0, 200, 120))
+        screen.blit(btn_text_howto, (howto_btn.centerx - btn_text_howto.get_width()//2, howto_btn.centery - btn_text_howto.get_height()//2))
+        
         # "Ayarlar" butonu
-        settings_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 - 10, 250, 70)
-        settings_color = (80, 80, 80) if game.hovered_button == "settings" else (60, 60, 60)
-        pygame.draw.rect(screen, settings_color, settings_btn, border_radius=15)
-        pygame.draw.rect(screen, (255,255,255), settings_btn, width=3, border_radius=15)
-        btn_text_set = menu_btn_font.render(get_text("menu_settings"), True, TEXT)
+        settings_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 50, 250, 70)
+        settings_color = (0, 140, 80) if game.hovered_button == "settings" else (0, 90, 50)
+        pygame.draw.rect(screen, settings_color, settings_btn, border_radius=8)
+        pygame.draw.rect(screen, (0, 180, 100), settings_btn, width=3, border_radius=8)
+        if game.hovered_button == "settings":
+            for i in range(2):
+                glow_rect = pygame.Rect(settings_btn.x - i, settings_btn.y - i, settings_btn.w + 2*i, settings_btn.h + 2*i)
+                pygame.draw.rect(screen, (0, 160, 90), glow_rect, width=1, border_radius=8)
+        btn_text_set = menu_btn_font.render(get_text("menu_settings"), True, (0, 200, 120))
         screen.blit(btn_text_set, (settings_btn.centerx - btn_text_set.get_width()//2, settings_btn.centery - btn_text_set.get_height()//2))
         
         # "Çıkış" butonu
-        exit_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 80, 250, 70)
-        exit_color = (80, 80, 80) if game.hovered_button == "exit" else (60, 60, 60)
-        pygame.draw.rect(screen, exit_color, exit_btn, border_radius=15)
-        pygame.draw.rect(screen, (255,255,255), exit_btn, width=3, border_radius=15)
-        btn_text2 = menu_btn_font.render(get_text("menu_exit"), True, TEXT)
+        exit_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 125, 250, 70)
+        exit_color = (180, 40, 40) if game.hovered_button == "exit" else (120, 30, 30)
+        pygame.draw.rect(screen, exit_color, exit_btn, border_radius=8)
+        pygame.draw.rect(screen, (200, 80, 80), exit_btn, width=3, border_radius=8)
+        if game.hovered_button == "exit":
+            for i in range(2):
+                glow_rect = pygame.Rect(exit_btn.x - i, exit_btn.y - i, exit_btn.w + 2*i, exit_btn.h + 2*i)
+                pygame.draw.rect(screen, (190, 70, 70), glow_rect, width=1, border_radius=8)
+        btn_text2 = menu_btn_font.render(get_text("menu_exit"), True, (220, 140, 140))
         screen.blit(btn_text2, (exit_btn.centerx - btn_text2.get_width()//2, exit_btn.centery - btn_text2.get_height()//2))
         
         present()
@@ -982,46 +1027,90 @@ while running:
         lang_tr_btn = pygame.Rect(SCREEN_W//2 - 180, SCREEN_H//2 - 130, 150, 50)
         lang_en_btn = pygame.Rect(SCREEN_W//2 + 30, SCREEN_H//2 - 130, 150, 50)
         
-        # TR butonu
-        tr_color = (80, 80, 80) if settings.language == "TR" else (40, 40, 40)
-        pygame.draw.rect(screen, tr_color, lang_tr_btn, border_radius=15)
-        pygame.draw.rect(screen, (255,255,255), lang_tr_btn, width=3, border_radius=15)
-        btn_tr = menu_btn_font.render(get_text("settings_turkish"), True, TEXT)
+        # TR butonu - Retro styled (softer)
+        tr_color = (0, 140, 80) if settings.language == "TR" else (0, 70, 40)
+        pygame.draw.rect(screen, tr_color, lang_tr_btn, border_radius=8)
+        pygame.draw.rect(screen, (0, 180, 100), lang_tr_btn, width=3, border_radius=8)
+        btn_tr = menu_btn_font.render(get_text("settings_turkish"), True, (0, 200, 120))
         screen.blit(btn_tr, (lang_tr_btn.centerx - btn_tr.get_width()//2, lang_tr_btn.centery - btn_tr.get_height()//2))
         
-        # EN butonu
-        en_color = (80, 80, 80) if settings.language == "EN" else (40, 40, 40)
-        pygame.draw.rect(screen, en_color, lang_en_btn, border_radius=15)
-        pygame.draw.rect(screen, (255,255,255), lang_en_btn, width=3, border_radius=15)
-        btn_en = menu_btn_font.render(get_text("settings_english"), True, TEXT)
+        # EN butonu - Retro styled (softer)
+        en_color = (0, 140, 80) if settings.language == "EN" else (0, 70, 40)
+        pygame.draw.rect(screen, en_color, lang_en_btn, border_radius=8)
+        pygame.draw.rect(screen, (0, 180, 100), lang_en_btn, width=3, border_radius=8)
+        btn_en = menu_btn_font.render(get_text("settings_english"), True, (0, 200, 120))
         screen.blit(btn_en, (lang_en_btn.centerx - btn_en.get_width()//2, lang_en_btn.centery - btn_en.get_height()//2))
         
-        # Ses Efektleri Seviyesi
+        # Ses Efektleri Seviyesi - Retro slider (softer)
         draw_text(screen, get_text("settings_sound"), (SCREEN_W//2 - 150, SCREEN_H//2 - 50), font)
         sound_x = SCREEN_W//2 - 100
         sound_y = SCREEN_H//2 - 30
         sound_w = 300
-        sound_h = 15
+        sound_h = 20
         sound_slider = pygame.Rect(sound_x, sound_y, int(sound_w * settings.sound_volume), sound_h)
-        pygame.draw.rect(screen, (80, 80, 80), (sound_x, sound_y, sound_w, sound_h), border_radius=5)
-        pygame.draw.rect(screen, (255, 255, 255), sound_slider, border_radius=5)
+        pygame.draw.rect(screen, (40, 80, 50), (sound_x, sound_y, sound_w, sound_h), border_radius=4)
+        pygame.draw.rect(screen, (0, 180, 100), sound_slider, border_radius=4)
+        pygame.draw.rect(screen, (0, 160, 90), (sound_x, sound_y, sound_w, sound_h), width=2, border_radius=4)
         
-        # Müzik Seviyesi
+        # Müzik Seviyesi - Retro slider (softer)
         draw_text(screen, get_text("settings_music"), (SCREEN_W//2 - 150, SCREEN_H//2 + 30), font)
         music_x = SCREEN_W//2 - 100
         music_y = SCREEN_H//2 + 50
         music_w = 300
-        music_h = 15
+        music_h = 20
         music_slider = pygame.Rect(music_x, music_y, int(music_w * settings.music_volume), music_h)
-        pygame.draw.rect(screen, (80, 80, 80), (music_x, music_y, music_w, music_h), border_radius=5)
-        pygame.draw.rect(screen, (255, 255, 255), music_slider, border_radius=5)
+        pygame.draw.rect(screen, (40, 80, 50), (music_x, music_y, music_w, music_h), border_radius=4)
+        pygame.draw.rect(screen, (0, 180, 100), music_slider, border_radius=4)
+        pygame.draw.rect(screen, (0, 160, 90), (music_x, music_y, music_w, music_h), width=2, border_radius=4)
         
-        # Geri butonu
+        # Geri butonu - Retro styled (softer)
         back_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 170, 250, 70)
-        back_color = (80, 80, 80)
-        pygame.draw.rect(screen, back_color, back_btn, border_radius=15)
-        pygame.draw.rect(screen, (255,255,255), back_btn, width=3, border_radius=15)
-        btn_back = menu_btn_font.render(get_text("settings_back"), True, TEXT)
+        back_color = (0, 90, 50)
+        pygame.draw.rect(screen, back_color, back_btn, border_radius=8)
+        pygame.draw.rect(screen, (0, 180, 100), back_btn, width=3, border_radius=8)
+        btn_back = menu_btn_font.render(get_text("settings_back"), True, (0, 200, 120))
+        screen.blit(btn_back, (back_btn.centerx - btn_back.get_width()//2, back_btn.centery - btn_back.get_height()//2))
+        
+        present()
+        continue
+    
+    # Nasıl Oynanır ekranı
+    if game.state == "howto":
+        # Başlık
+        title_y = SCREEN_H // 2 - 280
+        menu_title_font = pygame.font.Font(bytesized_font_path, 44) if os.path.exists(bytesized_font_path) else pygame.font.Font(None, 44)
+        title_text = menu_title_font.render(get_text("howto_title"), True, TEXT)
+        screen.blit(title_text, (SCREEN_W//2 - title_text.get_width()//2, title_y))
+        
+        menu_btn_font = pygame.font.Font(bytesized_font_path, 24) if os.path.exists(bytesized_font_path) else pygame.font.Font(None, 24)
+        
+        y_start = SCREEN_H // 2 - 200
+        line_spacing = 35
+        
+        # Amaç bölümü
+        draw_text(screen, get_text("howto_objective"), (SCREEN_W//2 - 200, y_start), font)
+        draw_text(screen, get_text("howto_objective_text"), (SCREEN_W//2 - 200, y_start + 30), font)
+        
+        # Kontroller bölümü
+        draw_text(screen, get_text("howto_controls"), (SCREEN_W//2 - 200, y_start + 80), font)
+        
+        current_y = y_start + 110
+        draw_text(screen, get_text("howto_mouse"), (SCREEN_W//2 - 200, current_y), font)
+        current_y += line_spacing
+        draw_text(screen, get_text("howto_u"), (SCREEN_W//2 - 200, current_y), font)
+        current_y += line_spacing
+        draw_text(screen, get_text("howto_r"), (SCREEN_W//2 - 200, current_y), font)
+        current_y += line_spacing
+        draw_text(screen, get_text("howto_esc"), (SCREEN_W//2 - 200, current_y), font)
+        current_y += line_spacing
+        draw_text(screen, get_text("howto_f11"), (SCREEN_W//2 - 200, current_y), font)
+        
+        # Geri butonu - Retro styled (softer)
+        back_btn = pygame.Rect(SCREEN_W//2 - 125, SCREEN_H//2 + 170, 250, 70)
+        back_color = (0, 90, 50)
+        pygame.draw.rect(screen, back_color, back_btn, border_radius=8)
+        pygame.draw.rect(screen, (0, 180, 100), back_btn, width=3, border_radius=8)
+        btn_back = menu_btn_font.render(get_text("howto_back"), True, (0, 200, 120))
         screen.blit(btn_back, (back_btn.centerx - btn_back.get_width()//2, back_btn.centery - btn_back.get_height()//2))
         
         present()
@@ -1029,12 +1118,12 @@ while running:
     
     # Oyun ekranı
     if game.state == "playing":
-        # Ayarlar butonu (sağ üst)
+        # Ayarlar butonu (sağ üst) - Retro styled (softer)
         settings_btn_rect = pygame.Rect(SCREEN_W - 60, 10, 50, 50)
-        pygame.draw.rect(screen, (60, 60, 60), settings_btn_rect, border_radius=10)
-        pygame.draw.rect(screen, (255, 255, 255), settings_btn_rect, width=2, border_radius=10)
+        pygame.draw.rect(screen, (0, 90, 50), settings_btn_rect, border_radius=8)
+        pygame.draw.rect(screen, (0, 180, 100), settings_btn_rect, width=2, border_radius=8)
         settings_icon_font = pygame.font.Font(bytesized_font_path, 24) if os.path.exists(bytesized_font_path) else pygame.font.Font(None, 24)
-        settings_icon = settings_icon_font.render("⚙", True, TEXT)
+        settings_icon = settings_icon_font.render("⚙", True, (0, 200, 120))
         screen.blit(settings_icon, (settings_btn_rect.centerx - settings_icon.get_width()//2, settings_btn_rect.centery - settings_icon.get_height()//2))
         
         draw_text(screen, "Klo.", (MARGIN + 20, 34), titlefont)
@@ -1064,19 +1153,25 @@ while running:
             y = MARGIN + 120 + j * CELL_H
             pygame.draw.line(screen, GRID_LINE, (MARGIN, y), (MARGIN+BOARD_W, y), 2)
 
-        # exit marker
+        # exit marker - Retro styled with subtle glow
         ex,ey = game.board.exit
         ex_r = pygame.Rect(MARGIN + ex * CELL_W, MARGIN + 120 + ey * CELL_H, CELL_W * 2, CELL_H * 2)
-        pygame.draw.rect(screen, (30, 60, 30), ex_r, border_radius=8)
+        # Subtle glow effect
+        for i in range(1):
+            glow_r = pygame.Rect(ex_r.x - i, ex_r.y - i, ex_r.w + 2*i, ex_r.h + 2*i)
+            pygame.draw.rect(screen, (0, 140, 70), glow_r, border_radius=8 + i)
+        pygame.draw.rect(screen, (0, 160, 90), ex_r, border_radius=8)
+        pygame.draw.rect(screen, (0, 180, 100), ex_r, width=2, border_radius=8)
         draw_text(screen, get_text("game_exit"), (ex_r.x + 6, ex_r.y + 6), font)
 
-        # preview outline
+        # preview outline - Retro styled with subtle glow
         if getattr(game, "preview_cell", None) is not None:
             pid, pgx, pgy = game.preview_cell
             preview_block = game.board.blocks.get(pid)
             if preview_block:
                 preview_rect = pygame.Rect(MARGIN + pgx * CELL_W, MARGIN + 120 + pgy * CELL_H, CELL_W * preview_block.w, CELL_H * preview_block.h)
-                pygame.draw.rect(screen, (255,255,255), preview_rect, width=3, border_radius=12)
+                # Subtle glow effect
+                pygame.draw.rect(screen, (0, 160, 100), preview_rect, width=3, border_radius=12)
 
         # draw blocks (non-selected first) - sadece grid pozisyonlarında
         for bl in game.board.blocks.values():
@@ -1098,18 +1193,19 @@ while running:
             # Geri döndür
             game.selected.rect.y = original_y
 
-        # completion overlay
+        # completion overlay - Retro styled (softer)
         if game.solved:
             overlay = pygame.Surface((SCREEN_W, SCREEN_H))
             overlay.set_alpha(200)
-            overlay.fill((0,0,0))
+            overlay.fill((10,10,10))
             screen.blit(overlay, (0,0))
-            draw_text(screen, get_text("game_complete"), (SCREEN_W//2 - 80, SCREEN_H//2 - 100), titlefont, (20,180,100))
+            # Softer victory colors
+            draw_text(screen, get_text("game_complete"), (SCREEN_W//2 - 80, SCREEN_H//2 - 100), titlefont, (220, 220, 120))  # Softer yellow
             completion_minutes = int(game.completion_time // 60)
             completion_seconds = int(game.completion_time % 60)
-            draw_text(screen, f"{get_text('game_complete_time')}: {completion_minutes:02d}:{completion_seconds:02d}", (SCREEN_W//2 - 140, SCREEN_H//2 - 40), bigfont)
-            draw_text(screen, f"{get_text('game_complete_moves')}: {game.moves}", (SCREEN_W//2 - 100, SCREEN_H//2 + 20), bigfont)
-            draw_text(screen, get_text("game_restart_hint"), (SCREEN_W//2 - 120, SCREEN_H//2 + 100), font)
+            draw_text(screen, f"{get_text('game_complete_time')}: {completion_minutes:02d}:{completion_seconds:02d}", (SCREEN_W//2 - 140, SCREEN_H//2 - 40), bigfont, (0, 200, 120))
+            draw_text(screen, f"{get_text('game_complete_moves')}: {game.moves}", (SCREEN_W//2 - 100, SCREEN_H//2 + 20), bigfont, (0, 200, 120))
+            draw_text(screen, get_text("game_restart_hint"), (SCREEN_W//2 - 120, SCREEN_H//2 + 100), font, (100, 200, 140))
 
 
     present()
