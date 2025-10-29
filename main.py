@@ -894,21 +894,21 @@ while running:
                     if b.axis_locked == 'x' or (b.axis_locked is None and abs(dx) >= abs(dy)):
                         # Yatay hareket
                         step = 1 if dx > 0 else -1
-                    for _ in range(abs(dx)):
+                        for _ in range(abs(dx)):
                             if game.board.can_move(b.id, step, 0):
                                 game.board.slide_one(b.id, step, 0, record=False)
-                            moved = True
-                        else:
-                            break
-                else:
+                                moved = True
+                            else:
+                                break
+                    else:
                         # Dikey hareket
                         step = 1 if dy > 0 else -1
-                    for _ in range(abs(dy)):
+                        for _ in range(abs(dy)):
                             if game.board.can_move(b.id, 0, step):
                                 game.board.slide_one(b.id, 0, step, record=False)
-                            moved = True
-                        else:
-                            break
+                                moved = True
+                            else:
+                                break
                 
                 if moved:
                     play_sound(SND_MOVE)
