@@ -8,7 +8,7 @@ from pygame.locals import *
 # ---------------------------
 pygame.init()
 try:
-    pygame.mixer.init()
+pygame.mixer.init()
 except Exception:
     pass
 
@@ -112,7 +112,7 @@ def get_text(key):
             "settings_back": "Geri",
             "howto_title": "Nasıl Oynanır",
             "howto_objective": "Amaç",
-            "howto_objective_text": "Hedef bloğu (2x2 kırmızı blok) çıkışa (EXIT) taşıyın!",
+            "howto_objective_text": "Hedef bloğu (2x2 sarı T bloğu) çıkışa (EXIT) taşıyın!",
             "howto_controls": "Kontroller",
             "howto_mouse": "FARE: Blokları sürükleyip bırakarak hareket ettirin",
             "howto_u": "U: Son hamleyi geri al",
@@ -142,7 +142,7 @@ def get_text(key):
             "settings_back": "Back",
             "howto_title": "How to Play",
             "howto_objective": "Objective",
-            "howto_objective_text": "Move the target block (2x2 red block) to the exit (EXIT)!",
+            "howto_objective_text": "Move the target block (2x2 yellow T block) to the exit (EXIT)!",
             "howto_controls": "Controls",
             "howto_mouse": "MOUSE: Drag and drop blocks to move them",
             "howto_u": "U: Undo last move",
@@ -894,21 +894,21 @@ while running:
                     if b.axis_locked == 'x' or (b.axis_locked is None and abs(dx) >= abs(dy)):
                         # Yatay hareket
                         step = 1 if dx > 0 else -1
-                        for _ in range(abs(dx)):
+                    for _ in range(abs(dx)):
                             if game.board.can_move(b.id, step, 0):
                                 game.board.slide_one(b.id, step, 0, record=False)
-                                moved = True
-                            else:
-                                break
-                    else:
+                            moved = True
+                        else:
+                            break
+                else:
                         # Dikey hareket
                         step = 1 if dy > 0 else -1
-                        for _ in range(abs(dy)):
+                    for _ in range(abs(dy)):
                             if game.board.can_move(b.id, 0, step):
                                 game.board.slide_one(b.id, 0, step, record=False)
-                                moved = True
-                            else:
-                                break
+                            moved = True
+                        else:
+                            break
                 
                 if moved:
                     play_sound(SND_MOVE)
@@ -936,12 +936,12 @@ while running:
 
     # animate all blocks towards their pixel targets (except if currently being dragged)
     if game.state == "playing":
-        if game.dragging and game.selected:
+            if game.dragging and game.selected:
             # Sadece sürüklenmeyen blokları animate et
             for bl in game.board.blocks.values():
                 if bl is not game.selected:
                     bl.animate_towards_pixel_target(dt=dt)
-        else:
+                else:
             # Tüm blokları animate et
             for bl in game.board.blocks.values():
                 bl.animate_towards_pixel_target(dt=dt)
@@ -1143,18 +1143,18 @@ while running:
             draw_text(screen, music_text, (MARGIN + 20, SCREEN_H - 30), font)
 
         # board background
-        pygame.draw.rect(screen, BOARD_BG, (MARGIN, MARGIN+120, BOARD_W, BOARD_H), border_radius=10)
+    pygame.draw.rect(screen, BOARD_BG, (MARGIN, MARGIN+120, BOARD_W, BOARD_H), border_radius=10)
 
         # grid lines
-        for i in range(1, game.board.cols):
+    for i in range(1, game.board.cols):
             x = MARGIN + i * CELL_W
-            pygame.draw.line(screen, GRID_LINE, (x, MARGIN+120), (x, MARGIN+120+BOARD_H), 2)
-        for j in range(1, game.board.rows):
+        pygame.draw.line(screen, GRID_LINE, (x, MARGIN+120), (x, MARGIN+120+BOARD_H), 2)
+    for j in range(1, game.board.rows):
             y = MARGIN + 120 + j * CELL_H
-            pygame.draw.line(screen, GRID_LINE, (MARGIN, y), (MARGIN+BOARD_W, y), 2)
+        pygame.draw.line(screen, GRID_LINE, (MARGIN, y), (MARGIN+BOARD_W, y), 2)
 
         # exit marker - Retro styled with subtle glow
-        ex,ey = game.board.exit
+    ex,ey = game.board.exit
         ex_r = pygame.Rect(MARGIN + ex * CELL_W, MARGIN + 120 + ey * CELL_H, CELL_W * 2, CELL_H * 2)
         # Subtle glow effect
         for i in range(1):
@@ -1183,13 +1183,13 @@ while running:
             bl.rect = saved_rect
         
         # Sürüklenen bloğu en sonda çiz, biraz yukarıda (elevation) çiz ki diğer blokların üstünde görünsün
-        if game.selected:
+    if game.selected:
             elev = 20  # Yukarıda çizmek için offset
             original_y = game.selected.rect.y
             # Sürüklenen blok grid'in dışına çıkmasın
             min_y = MARGIN + 120
             game.selected.rect.y = max(min_y, original_y - elev)
-            game.selected.draw(screen, dragging=True)
+        game.selected.draw(screen, dragging=True)
             # Geri döndür
             game.selected.rect.y = original_y
 
