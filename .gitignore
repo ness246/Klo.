@@ -9,9 +9,10 @@ venv/
 ENV/
 .venv
 
-# Audio files (generated)
+# Audio files (generated - only WAV files are auto-generated)
 assets/audio/*.wav
-assets/audio/*.ogg
+# OGG files are music files that should be included
+# assets/audio/*.ogg
 
 # Settings
 settings.json
