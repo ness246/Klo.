@@ -30,6 +30,20 @@
 
 Hedef bloğu (2x2 sarı blok) EXIT noktasına taşıyarak her seviyeyi tamamlayın. Minimum hamle ve süre ile çözerek kendinize meydan okuyun!
 
+## 📸 Ekran Görüntüleri
+
+<div align="center">
+
+![Oyun İçi Görünüm 1](ingame1.png)
+
+*Oyun içi görünüm - Retro 8-bit/16-bit tema*
+
+![Oyun İçi Görünüm 2](ingame2.png)
+
+*Bloklar ve EXIT noktası - Oynanış ekranı*
+
+</div>
+
 ## ✨ Özellikler
 
 ### 🎨 Görsel ve Tasarım
@@ -119,6 +133,8 @@ Klo./
 ├── requirements.txt        # Python bağımlılıkları
 ├── settings.json          # Kullanıcı ayarları (otomatik oluşturulur)
 ├── logo.png              # Oyun logosu
+├── ingame1.png           # Oyun içi ekran görüntüsü 1
+├── ingame2.png           # Oyun içi ekran görüntüsü 2
 ├── index.html            # GitHub Pages web sitesi
 ├── assets/
 │   ├── audio/            # Ses ve müzik dosyaları (otomatik oluşturulur)
@@ -226,6 +242,20 @@ Sorularınız, önerileriniz veya geri bildirimleriniz için [GitHub Issues](htt
 
 Complete each level by moving the target block (2x2 yellow block) to the EXIT point. Challenge yourself to solve with minimum moves and time!
 
+## 📸 Screenshots
+
+<div align="center">
+
+![In-Game View 1](ingame1.png)
+
+*In-game view - Retro 8-bit/16-bit theme*
+
+![In-Game View 2](ingame2.png)
+
+*Blocks and EXIT point - Gameplay screen*
+
+</div>
+
 ## ✨ Features
 
 ### 🎨 Visual and Design
@@ -315,6 +345,8 @@ Klo./
 ├── requirements.txt        # Python dependencies
 ├── settings.json          # User settings (auto-generated)
 ├── logo.png              # Game logo
+├── ingame1.png           # In-game screenshot 1
+├── ingame2.png           # In-game screenshot 2
 ├── index.html            # GitHub Pages website
 ├── assets/
 │   ├── audio/            # Sound and music files (auto-generated)
