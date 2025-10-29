@@ -1154,6 +1154,23 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
         
+        #demo-restart:hover {
+            background: #00ff00;
+            color: #000;
+            transform: translate(-2px, -2px);
+            box-shadow: 
+                4px 4px 0px rgba(0, 255, 0, 0.8),
+                0 0 20px rgba(0, 255, 0, 0.5);
+            text-shadow: none;
+        }
+        
+        #demo-restart:active {
+            transform: translate(1px, 1px);
+            box-shadow: 
+                2px 2px 0px rgba(0, 255, 0, 0.8),
+                inset 2px 2px 0px rgba(0, 0, 0, 0.3);
+        }
+        
         .dark-section .section-title::after {
             background: repeating-linear-gradient(
                 90deg,
@@ -1182,10 +1199,11 @@
             <img src="logo.png" alt="Klo. Logo">
         </div>
         <ul class="nav-links">
-            <li><a href="#about" data-i18n="nav_about">About</a></li>
-            <li><a href="#features" data-i18n="nav_features">Features</a></li>
-            <li><a href="#controls" data-i18n="nav_controls">Controls</a></li>
-            <li><a href="#download" data-i18n="nav_download">Download</a></li>
+                <li><a href="#demo" data-i18n="nav_demo">Demo</a></li>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#features" data-i18n="nav_features">Features</a></li>
+                <li><a href="#controls" data-i18n="nav_controls">Controls</a></li>
+                <li><a href="#download" data-i18n="nav_download">Download</a></li>
             <li>
                 <div class="language-selector">
                     <button class="lang-btn" id="lang-en">EN</button>
@@ -1207,6 +1225,50 @@
             </svg>
         </div>
     </div>
+    
+    <section id="demo" class="dark-section">
+        <h2 class="section-title" data-i18n="demo_title">Try It Now!</h2>
+        <p class="section-subtitle" data-i18n="demo_subtitle">Play a quick demo of Klo. right in your browser!</p>
+        
+        <div style="display: flex; justify-content: center; margin-top: 60px;">
+            <div id="demo-container" style="position: relative;">
+                <canvas id="demo-canvas" width="320" height="400" style="
+                    border: 4px solid #00ff00;
+                    background: #1a1a1a;
+                    box-shadow: 
+                        6px 6px 0px rgba(0, 255, 0, 0.5),
+                        inset 2px 2px 0px rgba(0, 255, 0, 0.2),
+                        0 0 30px rgba(0, 255, 0, 0.3);
+                    image-rendering: pixelated;
+                    cursor: grab;
+                "></canvas>
+                <div id="demo-info" style="
+                    margin-top: 20px;
+                    text-align: center;
+                    color: #00ff00;
+                    font-size: 14px;
+                ">
+                    <div id="demo-status" data-i18n="demo_instruction"></div>
+                    <div style="margin-top: 10px; font-size: 12px; color: rgba(0, 255, 0, 0.7);">
+                        <span id="demo-moves">Moves: 0</span> | 
+                        <span id="demo-timer">Time: 00:00</span>
+                    </div>
+                    <button id="demo-restart" style="
+                        margin-top: 15px;
+                        padding: 10px 20px;
+                        background: #0a0a0a;
+                        border: 2px solid #00ff00;
+                        color: #00ff00;
+                        cursor: pointer;
+                        font-family: 'Tiny5', 'Courier New', monospace;
+                        font-size: 12px;
+                        transition: all 0.15s ease;
+                        text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+                    " data-i18n="demo_restart">Restart</button>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <section id="about">
         <h2 class="section-title" data-i18n="about_title">About</h2>
@@ -1345,6 +1407,10 @@
                 'nav_features': 'Features',
                 'nav_controls': 'Controls',
                 'nav_download': 'Download',
+                'demo_title': 'Try It Now!',
+                'demo_subtitle': 'Play a quick demo of Klo. right in your browser!',
+                'demo_instruction': 'Drag the yellow block to the EXIT!',
+                'demo_restart': 'Restart',
                 'hero_title': 'Challenge Your Mind',
                 'hero_subtitle': 'Test your mind and problem solving skills with this Klotski puzzle that is originated in the early 20th century',
                 'hero_button': 'Download Game',
@@ -1380,6 +1446,7 @@
                 'download_subtitle': 'Get the latest version from GitHub.',
                 'download_github': 'GitHub Repository',
                 'download_zip': 'Download .zip',
+                'nav_demo': 'Demo',
                 'footer_developer': 'Developer',
                 'footer_music': 'Music',
                 'footer_music_desc': 'Producers credited in music file names',
@@ -1391,6 +1458,10 @@
                 'nav_features': 'Özellikler',
                 'nav_controls': 'Kontroller',
                 'nav_download': 'İndir',
+                'demo_title': 'Hemen Dene!',
+                'demo_subtitle': 'Klo.\'yu tarayıcında hemen oyna!',
+                'demo_instruction': 'Sarı bloğu EXIT\'e taşı!',
+                'demo_restart': 'Yeniden Başlat',
                 'hero_title': 'Zihnine Meydan Oku',
                 'hero_subtitle': '20. yüzyılın başlarında ortaya çıkan bu Klotski bulmacası ile zihnini ve problem çözme yeteneklerini test et',
                 'hero_button': 'Oyunu İndir',
@@ -1426,6 +1497,7 @@
                 'download_subtitle': 'GitHub\'dan en son sürümü al.',
                 'download_github': 'GitHub Deposu',
                 'download_zip': '.zip İndir',
+                'nav_demo': 'Demo',
                 'footer_developer': 'Geliştirici',
                 'footer_music': 'Müzik',
                 'footer_music_desc': 'Yapımcılar müzik dosya isimlerinde belirtilmiştir',
@@ -1437,7 +1509,7 @@
         // Get current language from localStorage or default to 'en'
         let currentLang = localStorage.getItem('klo_language') || 'en';
         
-        // Function to change language
+            // Function to change language
         function changeLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('klo_language', lang);
@@ -1449,6 +1521,16 @@
                     element.textContent = translations[lang][key];
                 }
             });
+            
+            // Update demo status if not solved
+            const statusEl = document.getElementById('demo-status');
+            if (statusEl && (!window.demoSolved || window.demoSolved === false)) {
+                const demoStatusKey = 'demo_instruction';
+                if (translations[lang] && translations[lang][demoStatusKey]) {
+                    statusEl.textContent = translations[lang][demoStatusKey];
+                    statusEl.style.color = '#00ff00';
+                }
+            }
             
             // Update active button state
             document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1600,6 +1682,370 @@
                 document.documentElement.style.setProperty('--scanline-offset', scanlineOffset + 'px');
             }
         });
+        
+        // Klotski Demo Game
+        (function() {
+            const canvas = document.getElementById('demo-canvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const GRID_COLS = 4;
+            const GRID_ROWS = 5;
+            const CELL_SIZE = 60;
+            const MARGIN = 40;
+            const BOARD_WIDTH = GRID_COLS * CELL_SIZE;
+            const BOARD_HEIGHT = GRID_ROWS * CELL_SIZE;
+            
+            // Color palette matching the game
+            const COLORS = {
+                'T': [220, 200, 80],
+                'red': [200, 80, 80],
+                'magenta': [200, 120, 200],
+                'lime': [100, 200, 100],
+                'violet': [150, 100, 200],
+                'teal': [80, 200, 160],
+                'orange': [220, 150, 80],
+                'blue': [80, 120, 200]
+            };
+            
+            // Simplified level data (based on A-01)
+            let blocks = [
+                {id: 'T', w: 2, h: 2, x: 1, y: 0, color: 'T', isTarget: true},
+                {id: 'L', w: 1, h: 2, x: 0, y: 0, color: 'red'},
+                {id: 'R', w: 1, h: 2, x: 3, y: 0, color: 'violet'},
+                {id: 'B1', w: 1, h: 2, x: 0, y: 2, color: 'teal'},
+                {id: 'B2', w: 1, h: 2, x: 3, y: 2, color: 'blue'},
+                {id: 'M', w: 2, h: 1, x: 1, y: 2, color: 'orange'},
+                {id: 's1', w: 1, h: 1, x: 1, y: 3, color: 'magenta'},
+                {id: 's2', w: 1, h: 1, x: 2, y: 3, color: 'lime'}
+            ];
+            
+            const exitPos = {x: 1, y: 3};
+            const initialBlocksData = JSON.parse(JSON.stringify(blocks));
+            let selectedBlock = null;
+            let dragOffset = {x: 0, y: 0};
+            let moves = 0;
+            let startTime = Date.now();
+            let solved = false;
+            let initialPositions = JSON.parse(JSON.stringify(blocks));
+            
+            function getPixelPos(gridX, gridY) {
+                return {
+                    x: MARGIN + gridX * CELL_SIZE,
+                    y: MARGIN + gridY * CELL_SIZE
+                };
+            }
+            
+            function getGridPos(pixelX, pixelY) {
+                return {
+                    x: Math.floor((pixelX - MARGIN) / CELL_SIZE),
+                    y: Math.floor((pixelY - MARGIN) / CELL_SIZE)
+                };
+            }
+            
+            function getOccupancy(ignoreBlock = null) {
+                const grid = Array(GRID_ROWS).fill(null).map(() => Array(GRID_COLS).fill(null));
+                blocks.forEach(block => {
+                    if (block === ignoreBlock) return;
+                    for (let y = block.y; y < block.y + block.h; y++) {
+                        for (let x = block.x; x < block.x + block.w; x++) {
+                            if (x >= 0 && x < GRID_COLS && y >= 0 && y < GRID_ROWS) {
+                                grid[y][x] = block.id;
+                            }
+                        }
+                    }
+                });
+                return grid;
+            }
+            
+            function canMove(block, dx, dy) {
+                const newX = block.x + dx;
+                const newY = block.y + dy;
+                
+                if (newX < 0 || newY < 0 || newX + block.w > GRID_COLS || newY + block.h > GRID_ROWS) {
+                    return false;
+                }
+                
+                const occ = getOccupancy(block);
+                for (let y = newY; y < newY + block.h; y++) {
+                    for (let x = newX; x < newX + block.w; x++) {
+                        if (occ[y][x] !== null) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+            
+            function draw() {
+                // Clear canvas
+                ctx.fillStyle = '#1a1a1a';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw board background
+                ctx.fillStyle = '#1e231f';
+                ctx.fillRect(MARGIN, MARGIN, BOARD_WIDTH, BOARD_HEIGHT);
+                
+                // Draw grid lines
+                ctx.strokeStyle = '#285032';
+                ctx.lineWidth = 1;
+                for (let i = 1; i < GRID_COLS; i++) {
+                    const x = MARGIN + i * CELL_SIZE;
+                    ctx.beginPath();
+                    ctx.moveTo(x, MARGIN);
+                    ctx.lineTo(x, MARGIN + BOARD_HEIGHT);
+                    ctx.stroke();
+                }
+                for (let i = 1; i < GRID_ROWS; i++) {
+                    const y = MARGIN + i * CELL_SIZE;
+                    ctx.beginPath();
+                    ctx.moveTo(MARGIN, y);
+                    ctx.lineTo(MARGIN + BOARD_WIDTH, y);
+                    ctx.stroke();
+                }
+                
+                // Draw exit marker
+                const exitPixel = getPixelPos(exitPos.x, exitPos.y);
+                ctx.fillStyle = 'rgba(0, 160, 90, 0.6)';
+                ctx.fillRect(exitPixel.x, exitPixel.y, CELL_SIZE * 2, CELL_SIZE * 2);
+                ctx.strokeStyle = '#00b464';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(exitPixel.x, exitPixel.y, CELL_SIZE * 2, CELL_SIZE * 2);
+                ctx.fillStyle = '#00c878';
+                ctx.font = '12px monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText('EXIT', exitPixel.x + CELL_SIZE, exitPixel.y + CELL_SIZE);
+                
+                // Draw blocks
+                blocks.forEach(block => {
+                    if (block === selectedBlock) return;
+                    const pixelPos = getPixelPos(block.x, block.y);
+                    drawBlock(block, pixelPos.x, pixelPos.y, false);
+                });
+                
+                // Draw selected block on top
+                if (selectedBlock) {
+                    const pixelPos = getPixelPos(selectedBlock.x, selectedBlock.y);
+                    drawBlock(selectedBlock, pixelPos.x, pixelPos.y, true);
+                }
+            }
+            
+            function drawBlock(block, x, y, isSelected) {
+                const color = COLORS[block.color] || [100, 100, 100];
+                const mutedColor = color.map(c => Math.max(0, c - 15));
+                
+                // Shadow/glow effect
+                if (isSelected) {
+                    ctx.shadowColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.6)`;
+                    ctx.shadowBlur = 10;
+                }
+                
+                // Block body
+                ctx.fillStyle = `rgb(${mutedColor[0]}, ${mutedColor[1]}, ${mutedColor[2]})`;
+                ctx.fillRect(x + 2, y + 2, block.w * CELL_SIZE - 4, block.h * CELL_SIZE - 4);
+                
+                // Border
+                ctx.strokeStyle = `rgb(${Math.min(255, mutedColor[0] + 40)}, ${Math.min(255, mutedColor[1] + 40)}, ${Math.min(255, mutedColor[2] + 40)})`;
+                ctx.lineWidth = 2;
+                ctx.strokeRect(x + 2, y + 2, block.w * CELL_SIZE - 4, block.h * CELL_SIZE - 4);
+                
+                // Block ID text
+                ctx.shadowBlur = 0;
+                const avgBrightness = (mutedColor[0] + mutedColor[1] + mutedColor[2]) / 3;
+                ctx.fillStyle = avgBrightness > 190 ? '#141414' : '#f0f0f0';
+                ctx.font = 'bold 14px monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText(block.id, x + (block.w * CELL_SIZE) / 2, y + (block.h * CELL_SIZE) / 2 + 5);
+            }
+            
+            function checkSolved() {
+                const targetBlock = blocks.find(b => b.isTarget);
+                if (targetBlock && targetBlock.x === exitPos.x && targetBlock.y === exitPos.y) {
+                    solved = true;
+                    window.demoSolved = true; // Make it accessible
+                    const statusEl = document.getElementById('demo-status');
+                    if (statusEl) {
+                        const time = Math.floor((Date.now() - startTime) / 1000);
+                        const currentLang = localStorage.getItem('klo_language') || 'en';
+                        if (currentLang === 'tr') {
+                            statusEl.textContent = `🎉 Tebrikler! ${moves} hamlede ${Math.floor(time/60)}:${(time%60).toString().padStart(2,'0')} sürede çözdün!`;
+                        } else {
+                            statusEl.textContent = `🎉 Congratulations! Solved in ${moves} moves and ${Math.floor(time/60)}:${(time%60).toString().padStart(2,'0')}!`;
+                        }
+                        statusEl.style.color = '#ffff00';
+                    }
+                    return true;
+                }
+                return false;
+            }
+            
+            function updateInfo() {
+                const movesEl = document.getElementById('demo-moves');
+                const timerEl = document.getElementById('demo-timer');
+                if (movesEl) movesEl.textContent = `Moves: ${moves}`;
+                if (timerEl && !solved) {
+                    const time = Math.floor((Date.now() - startTime) / 1000);
+                    const mins = Math.floor(time / 60);
+                    const secs = time % 60;
+                    timerEl.textContent = `Time: ${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+                }
+            }
+            
+            function restart() {
+                blocks = JSON.parse(JSON.stringify(initialBlocksData));
+                initialPositions = JSON.parse(JSON.stringify(initialBlocksData));
+                selectedBlock = null;
+                moves = 0;
+                startTime = Date.now();
+                solved = false;
+                window.demoSolved = false; // Make it accessible
+                const statusEl = document.getElementById('demo-status');
+                if (statusEl) {
+                    const currentLang = localStorage.getItem('klo_language') || 'en';
+                    if (currentLang === 'tr') {
+                        statusEl.textContent = translations['tr']['demo_instruction'];
+                    } else {
+                        statusEl.textContent = translations['en']['demo_instruction'];
+                    }
+                    statusEl.style.color = '#00ff00';
+                }
+                updateInfo();
+                draw();
+            }
+            
+            canvas.addEventListener('mousedown', (e) => {
+                if (solved) return;
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const gridPos = getGridPos(x, y);
+                
+                // Find clicked block
+                for (let i = blocks.length - 1; i >= 0; i--) {
+                    const block = blocks[i];
+                    if (gridPos.x >= block.x && gridPos.x < block.x + block.w &&
+                        gridPos.y >= block.y && gridPos.y < block.y + block.h) {
+                        selectedBlock = block;
+                        const pixelPos = getPixelPos(block.x, block.y);
+                        dragOffset.x = x - pixelPos.x;
+                        dragOffset.y = y - pixelPos.y;
+                        canvas.style.cursor = 'grabbing';
+                        break;
+                    }
+                }
+            });
+            
+            canvas.addEventListener('mousemove', (e) => {
+                if (!selectedBlock || solved) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const newPixelX = x - dragOffset.x;
+                const newPixelY = y - dragOffset.y;
+                const newGridPos = getGridPos(newPixelX, newPixelY);
+                
+                // Constrain to grid
+                newGridPos.x = Math.max(0, Math.min(GRID_COLS - selectedBlock.w, newGridPos.x));
+                newGridPos.y = Math.max(0, Math.min(GRID_ROWS - selectedBlock.h, newGridPos.y));
+                
+                // Move if valid
+                if (newGridPos.x !== selectedBlock.x || newGridPos.y !== selectedBlock.y) {
+                    const dx = newGridPos.x - selectedBlock.x;
+                    const dy = newGridPos.y - selectedBlock.y;
+                    
+                    if (Math.abs(dx) >= Math.abs(dy)) {
+                        // Horizontal movement
+                        const step = dx > 0 ? 1 : -1;
+                        for (let i = 0; i < Math.abs(dx); i++) {
+                            if (canMove(selectedBlock, step, 0)) {
+                                selectedBlock.x += step;
+                            } else {
+                                break;
+                            }
+                        }
+                    } else {
+                        // Vertical movement
+                        const step = dy > 0 ? 1 : -1;
+                        for (let i = 0; i < Math.abs(dy); i++) {
+                            if (canMove(selectedBlock, 0, step)) {
+                                selectedBlock.y += step;
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (selectedBlock.x !== newGridPos.x || selectedBlock.y !== newGridPos.y) {
+                        // Snap to final valid position
+                        selectedBlock.x = newGridPos.x;
+                        selectedBlock.y = newGridPos.y;
+                    }
+                }
+                
+                draw();
+            });
+            
+            canvas.addEventListener('mouseup', () => {
+                if (selectedBlock) {
+                    const moved = selectedBlock.x !== initialPositions.find(b => b.id === selectedBlock.id).x ||
+                                 selectedBlock.y !== initialPositions.find(b => b.id === selectedBlock.id).y;
+                    if (moved) {
+                        moves++;
+                        updateInfo();
+                    }
+                    
+                    // Validate final position
+                    const dx = selectedBlock.x - initialPositions.find(b => b.id === selectedBlock.id).x;
+                    const dy = selectedBlock.y - initialPositions.find(b => b.id === selectedBlock.id).y;
+                    
+                    if (!canMove(selectedBlock, 0, 0)) {
+                        // Revert if invalid
+                        const original = initialPositions.find(b => b.id === selectedBlock.id);
+                        selectedBlock.x = original.x;
+                        selectedBlock.y = original.y;
+                        if (moved) moves--;
+                    } else {
+                        initialPositions = JSON.parse(JSON.stringify(blocks));
+                        checkSolved();
+                    }
+                    
+                    selectedBlock = null;
+                    canvas.style.cursor = 'grab';
+                    draw();
+                }
+            });
+            
+            canvas.addEventListener('mouseleave', () => {
+                if (selectedBlock && !solved) {
+                    // Revert to last valid position
+                    const original = initialPositions.find(b => b.id === selectedBlock.id);
+                    selectedBlock.x = original.x;
+                    selectedBlock.y = original.y;
+                    selectedBlock = null;
+                    canvas.style.cursor = 'grab';
+                    draw();
+                }
+            });
+            
+            const restartBtn = document.getElementById('demo-restart');
+            if (restartBtn) {
+                restartBtn.addEventListener('click', restart);
+            }
+            
+            // Timer update
+            setInterval(() => {
+                if (!solved) {
+                    updateInfo();
+                }
+            }, 1000);
+            
+            // Initial draw
+            draw();
+            updateInfo();
+        })();
     </script>
 </body>
 </html>
