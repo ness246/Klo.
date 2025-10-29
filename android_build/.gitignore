@@ -1,0 +1,15 @@
+# Buildozer
+.bin/
+.buildozer/
+*.apk
+*.apks
+*.aab
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+

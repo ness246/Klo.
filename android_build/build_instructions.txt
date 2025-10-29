@@ -1,0 +1,27 @@
+ANDROID APK OLUŞTURMA TALİMATLARI
+==================================
+
+1. GEREKSİNİMLER:
+   - Linux/WSL (Windows için WSL2 önerilir)
+   - Python 3.8+
+   - Buildozer (pip install buildozer)
+
+2. KURULUM:
+   cd android_build
+   pip install buildozer
+
+3. APK OLUŞTURMA:
+   buildozer android debug
+
+   İlk build 30-60 dakika sürebilir.
+   APK dosyası: android_build/bin/ klasöründe oluşur.
+
+4. SORUN GİDERME:
+   - README_ANDROID.md dosyasına bakın
+   - Buildozer log dosyalarını kontrol edin
+
+5. NOTLAR:
+   - main_android.py Android için optimize edilmiştir
+   - buildozer.spec tüm ayarları içerir
+   - assets/ ve levels/ klasörleri otomatik dahil edilir
+
