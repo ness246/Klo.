@@ -11,7 +11,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ness246/Klo.)
 
-[🎮 Demo Sayfası](https://ness246.github.io/Klo./) • [📦 İndir](https://github.com/ness246/Klo./archive/refs/heads/main.zip) • [🐛 Hata Bildir](https://github.com/ness246/Klo./issues)
+[🌐 Websitesi](https://ness246.github.io/Klo./) • [📦 İndir](https://github.com/ness246/Klo./archive/refs/heads/main.zip) • [🐛 Hata Bildir](https://github.com/ness246/Klo./issues)
 
 </div>
 
@@ -139,7 +139,7 @@ Oyun içerisinde kullanılan müzikler ve ses efektleri:
 
 ## 🌐 Web Sitesi
 
-Projenin GitHub Pages demo sayfasını ziyaret edin:
+Projenin web sitesini ziyaret edin:
 
 🔗 **[https://ness246.github.io/Klo./](https://ness246.github.io/Klo./)**
 
