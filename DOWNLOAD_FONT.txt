@@ -1,0 +1,20 @@
+Bytesized Font İndirme Talimatları
+====================================
+
+1. Bu linkten Bytesized fontunu indirin:
+   https://fonts.google.com/specimen/Bytesized
+
+2. İndirme sayfasında "Download family" butonuna tıklayın
+
+3. ZIP dosyasını açın ve şu dosyayı bulun:
+   Bytesized-Regular.ttf
+
+4. Bu dosyayı assets/fonts/ klasörüne kopyalayın
+   Dosya adını Bytesized.ttf olarak değiştirin
+
+Alternatif: Eğer font zaten bilgisayarınızda yüklüyse,
+aşağıdaki klasöre bakın:
+C:\Windows\Fonts\Bytesized*.ttf
+
+Bu dosyayı assets/fonts/ klasörüne kopyalayın.
+
