@@ -101,6 +101,8 @@ Hedef bloğu (2x2 sarı blok) EXIT noktasına taşıyarak her seviyeyi tamamlay�
 
 ### Kurulum Adımları
 
+#### Windows
+
 1. **Projeyi İndirin**
    ```bash
    git clone https://github.com/ness246/Klo..git
@@ -117,6 +119,74 @@ Hedef bloğu (2x2 sarı blok) EXIT noktasına taşıyarak her seviyeyi tamamlay�
 3. **Oyunu Çalıştırın**
    ```bash
    python main.py
+   ```
+
+#### Linux
+
+1. **Sistem Gereksinimlerini Kurun**
+   
+   **Ubuntu/Debian:**
+   ```bash
+   sudo apt update
+   sudo apt install python3 python3-pip python3-venv python3-pygame
+   ```
+   
+   **Fedora:**
+   ```bash
+   sudo dnf install python3 python3-pip python3-pygame
+   ```
+   
+   **Arch Linux:**
+   ```bash
+   sudo pacman -S python python-pip python-pygame
+   ```
+
+2. **Projeyi İndirin**
+   ```bash
+   git clone https://github.com/ness246/Klo..git
+   cd Klo.
+   ```
+   
+   Veya GitHub'dan ZIP olarak indirin.
+
+3. **Sanal Ortam Oluşturun (Önerilen)**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+4. **Bağımlılıkları Yükleyin**
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+5. **Oyunu Çalıştırın**
+   ```bash
+   python3 main.py
+   ```
+
+#### macOS
+
+1. **Homebrew ile Python Kurulumu (Gerekirse)**
+   ```bash
+   brew install python3
+   ```
+
+2. **Projeyi İndirin**
+   ```bash
+   git clone https://github.com/ness246/Klo..git
+   cd Klo.
+   ```
+
+3. **Bağımlılıkları Yükleyin**
+   ```bash
+   pip3 install -r requirements.txt
+   ```
+
+4. **Oyunu Çalıştırın**
+   ```bash
+   python3 main.py
    ```
 
 ### Font Dosyası (Opsiyonel)
@@ -313,6 +383,8 @@ Complete each level by moving the target block (2x2 yellow block) to the EXIT po
 
 ### Installation Steps
 
+#### Windows
+
 1. **Download the Project**
    ```bash
    git clone https://github.com/ness246/Klo..git
@@ -329,6 +401,74 @@ Complete each level by moving the target block (2x2 yellow block) to the EXIT po
 3. **Run the Game**
    ```bash
    python main.py
+   ```
+
+#### Linux
+
+1. **Install System Requirements**
+   
+   **Ubuntu/Debian:**
+   ```bash
+   sudo apt update
+   sudo apt install python3 python3-pip python3-venv python3-pygame
+   ```
+   
+   **Fedora:**
+   ```bash
+   sudo dnf install python3 python3-pip python3-pygame
+   ```
+   
+   **Arch Linux:**
+   ```bash
+   sudo pacman -S python python-pip python-pygame
+   ```
+
+2. **Download the Project**
+   ```bash
+   git clone https://github.com/ness246/Klo..git
+   cd Klo.
+   ```
+   
+   Or download as ZIP from GitHub.
+
+3. **Create Virtual Environment (Recommended)**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+4. **Install Dependencies**
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+5. **Run the Game**
+   ```bash
+   python3 main.py
+   ```
+
+#### macOS
+
+1. **Install Python via Homebrew (if needed)**
+   ```bash
+   brew install python3
+   ```
+
+2. **Download the Project**
+   ```bash
+   git clone https://github.com/ness246/Klo..git
+   cd Klo.
+   ```
+
+3. **Install Dependencies**
+   ```bash
+   pip3 install -r requirements.txt
+   ```
+
+4. **Run the Game**
+   ```bash
+   python3 main.py
    ```
 
 ### Font File (Optional)
