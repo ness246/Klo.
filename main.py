@@ -894,21 +894,21 @@ while running:
                     if b.axis_locked == 'x' or (b.axis_locked is None and abs(dx) >= abs(dy)):
                         # Yatay hareket
                         step = 1 if dx > 0 else -1
-                        for _ in range(abs(dx)):
+                    for _ in range(abs(dx)):
                             if game.board.can_move(b.id, step, 0):
                                 game.board.slide_one(b.id, step, 0, record=False)
-                                moved = True
-                            else:
-                                break
-                    else:
+                            moved = True
+                        else:
+                            break
+                else:
                         # Dikey hareket
                         step = 1 if dy > 0 else -1
-                        for _ in range(abs(dy)):
+                    for _ in range(abs(dy)):
                             if game.board.can_move(b.id, 0, step):
                                 game.board.slide_one(b.id, 0, step, record=False)
-                                moved = True
-                            else:
-                                break
+                            moved = True
+                        else:
+                            break
                 
                 if moved:
                     play_sound(SND_MOVE)
@@ -1146,15 +1146,15 @@ while running:
     pygame.draw.rect(screen, BOARD_BG, (MARGIN, MARGIN+120, BOARD_W, BOARD_H), border_radius=10)
 
         # grid lines
-        for i in range(1, game.board.cols):
+    for i in range(1, game.board.cols):
             x = MARGIN + i * CELL_W
-            pygame.draw.line(screen, GRID_LINE, (x, MARGIN+120), (x, MARGIN+120+BOARD_H), 2)
-        for j in range(1, game.board.rows):
+        pygame.draw.line(screen, GRID_LINE, (x, MARGIN+120), (x, MARGIN+120+BOARD_H), 2)
+    for j in range(1, game.board.rows):
             y = MARGIN + 120 + j * CELL_H
-            pygame.draw.line(screen, GRID_LINE, (MARGIN, y), (MARGIN+BOARD_W, y), 2)
+        pygame.draw.line(screen, GRID_LINE, (MARGIN, y), (MARGIN+BOARD_W, y), 2)
 
         # exit marker - Retro styled with subtle glow
-        ex,ey = game.board.exit
+    ex,ey = game.board.exit
         ex_r = pygame.Rect(MARGIN + ex * CELL_W, MARGIN + 120 + ey * CELL_H, CELL_W * 2, CELL_H * 2)
         # Subtle glow effect
         for i in range(1):
