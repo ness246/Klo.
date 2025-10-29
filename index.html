@@ -1012,19 +1012,66 @@
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 15px 25px;
+                padding: 12px 20px;
+                flex-wrap: wrap;
+            }
+            
+            .logo-text img {
+                height: 32px !important;
             }
             
             .nav-links {
-                gap: 20px;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .nav-links a {
-                font-size: 14px;
+                font-size: 13px;
+                padding: 5px;
+            }
+            
+            .language-selector {
+                gap: 8px;
+            }
+            
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            .hero {
+                padding: 100px 30px 60px;
+                min-height: auto;
+            }
+            
+            .hero h1 {
+                font-size: clamp(32px, 10vw, 64px);
+                margin-bottom: 15px;
+            }
+            
+            .hero .subtitle {
+                font-size: clamp(16px, 4vw, 24px);
+                margin-bottom: 30px;
+            }
+            
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 12px;
             }
             
             section {
                 padding: 60px 25px;
+            }
+            
+            .section-title {
+                font-size: clamp(24px, 6vw, 40px);
+                margin-bottom: 40px;
+            }
+            
+            .section-subtitle {
+                font-size: 16px;
+                margin-bottom: 40px;
             }
             
             .about-content {
@@ -1032,14 +1079,61 @@
                 gap: 40px;
             }
             
+            .about-text {
+                font-size: 16px;
+            }
+            
             .features-grid,
             .controls-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .feature-card h3 {
+                font-size: 20px;
+            }
+            
+            .feature-card p {
+                font-size: 14px;
+            }
+            
+            .control-item {
+                padding: 25px 20px;
+            }
+            
+            .control-item strong {
+                font-size: 16px;
+            }
+            
+            .control-item span {
+                font-size: 14px;
+            }
+            
+            .code-block {
+                padding: 20px;
+                font-size: 13px;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-button {
+                width: 100%;
+                max-width: 300px;
+                padding: 15px 30px;
+                font-size: 13px;
             }
             
             .footer-info {
                 flex-direction: column;
                 gap: 30px;
+                text-align: center;
             }
             
             #demo-canvas {
@@ -1054,6 +1148,43 @@
         }
         
         @media (max-width: 480px) {
+            nav {
+                padding: 10px 15px;
+            }
+            
+            .logo-text img {
+                height: 28px !important;
+            }
+            
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 12px;
+            }
+            
+            .lang-btn {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+            
+            .hero {
+                padding: 80px 20px 50px;
+            }
+            
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+            
+            .section-title {
+                font-size: clamp(20px, 8vw, 32px);
+            }
+            
+            .section-subtitle {
+                font-size: 14px;
+            }
+            
             #demo-canvas {
                 border-width: 3px !important;
             }
@@ -1065,6 +1196,25 @@
             #demo-restart {
                 padding: 8px 16px !important;
                 font-size: 11px !important;
+                min-height: 40px;
+            }
+            
+            .feature-card {
+                padding: 25px 15px;
+            }
+            
+            .control-item {
+                padding: 20px 15px;
+            }
+            
+            .code-block {
+                padding: 15px;
+                font-size: 12px;
+            }
+            
+            .download-button {
+                padding: 12px 25px;
+                font-size: 12px;
             }
         }
         
