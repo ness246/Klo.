@@ -1143,7 +1143,7 @@ while running:
             draw_text(screen, music_text, (MARGIN + 20, SCREEN_H - 30), font)
 
         # board background
-        pygame.draw.rect(screen, BOARD_BG, (MARGIN, MARGIN+120, BOARD_W, BOARD_H), border_radius=10)
+    pygame.draw.rect(screen, BOARD_BG, (MARGIN, MARGIN+120, BOARD_W, BOARD_H), border_radius=10)
 
         # grid lines
         for i in range(1, game.board.cols):
