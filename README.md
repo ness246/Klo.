@@ -1,38 +1,107 @@
-# Klo. 🎮
-
 <div align="center">
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║    ██╗  ██╗██╗      ██████╗ ████████╗                        ║
+║    ██║ ██╔╝██║     ██╔═══██╗╚══██╔══╝                        ║
+║    █████╔╝ ██║     ██║   ██║   ██║                           ║
+║    ██╔═██╗ ██║     ██║   ██║   ██║                           ║
+║    ██║  ██╗███████╗╚██████╔╝   ██║                           ║
+║    ╚═╝  ╚═╝╚══════╝ ╚═════╝    ╚═╝                           ║
+║                                                               ║
+║   ██████╗  ██╗ ██████╗ ██╗  ██╗███████╗                     ║
+║   ██╔══██╗██║██╔═══██╗██║ ██╔╝██╔════╝                     ║
+║   ██████╔╝██║██║   ██║█████╔╝ ███████╗                     ║
+║   ██╔══██╗██║██║   ██║██╔═██╗ ╚════██║                     ║
+║   ██████╔╝██║╚██████╔╝██║  ██╗███████║                     ║
+║   ╚═════╝ ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝                     ║
+║                                                               ║
+║      ╔═══════════════════════════════════════════╗           ║
+║      ║  RETRO 8-BIT/16-BIT KLOTSKI PUZZLE GAME  ║           ║
+║      ╚═══════════════════════════════════════════╝           ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 ![Klo. Logo](logo.png)
 
-**🇹🇷 Retro 8-bit/16-bit Temalı Klotski Bulmaca Oyunu**  
-**🇬🇧 Retro 8-bit/16-bit Themed Klotski Puzzle Game**
+**<span style="color: #00ff00">█</span> RETRO 8-BIT/16-BIT THEMED KLOTSKI PUZZLE GAME <span style="color: #00ff00">█</span>**
 
-[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/)
-[![Pygame](https://img.shields.io/badge/Pygame-Latest-green.svg)](https://www.pygame.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ness246/Klo.)
+```
+┌─────────────────────────────────────────────────────────────┐
+│  ███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗   │
+│  ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║   │
+│  ███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║   │
+│  ╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║   │
+│  ███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║   │
+│  ╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg?style=for-the-badge)](https://www.python.org/)
+[![Pygame](https://img.shields.io/badge/Pygame-Latest-green.svg?style=for-the-badge)](https://www.pygame.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg?style=for-the-badge)](https://github.com/ness246/Klo.)
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║  [🌐] WEBSITE                                                 ║
+║  [📦] DOWNLOAD                                                ║
+║  [🐛] REPORT BUG                                              ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 [🌐 Websitesi / Website](https://ness246.github.io/Klo./) • [📦 İndir / Download](https://github.com/ness246/Klo./archive/refs/heads/main.zip) • [🐛 Hata Bildir / Report Bug](https://github.com/ness246/Klo./issues)
 
-**🇹🇷 / 🇬🇧 Bu README iki dilde mevcuttur. Aşağıdan istediğiniz dili seçin.**  
-**This README is available in two languages. Choose your preferred language below.**
+```
+┌─────────────────────────────────────────────────────────────┐
+│  🇹🇷 / 🇬🇧 Bu README iki dilde mevcuttur.                  │
+│  🇹🇷 / 🇬🇧 This README is available in two languages.      │
+│  Aşağıdan istediğiniz dili seçin / Choose your language    │
+└─────────────────────────────────────────────────────────────┘
+```
 
 </div>
 
 ---
 
 <details>
-<summary><b>🇹🇷 Türkçe / Turkish (Tıklayarak Aç)</b></summary>
+<summary><b>🇹🇷 <span style="color: #00ff00">████████</span> TÜRKÇE / TURKISH <span style="color: #00ff00">████████</span> (Tıklayarak Aç)</b></summary>
 
-## 📖 Hakkında
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                      📖 HAKKINDA / ABOUT                       ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 **Klo.**, 20. yüzyılın başlarında ortaya çıkan klasik Klotski bulmacasının modern bir yorumudur. Retro 8-bit/16-bit estetiğiyle harmanlanmış, göz dostu renkler ve akıcı oynanış sunan bir puzzle oyunudur.
 
 Hedef bloğu (2x2 sarı blok) EXIT noktasına taşıyarak her seviyeyi tamamlayın. Minimum hamle ve süre ile çözerek kendinize meydan okuyun!
 
-## ✨ Özellikler
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                    ✨ ÖZELLİKLER / FEATURES                     ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 ### 🎨 Görsel ve Tasarım
+```
+┌─────────────────────────────────────────────────────────┐
+│  █ Retro 8-bit/16-bit Tema                             │
+│    Atari/NES/SNES esintili görsel tasarım              │
+├─────────────────────────────────────────────────────────┤
+│  █ Göz Dostu Renkler                                   │
+│    Göz yormayan, yumuşatılmış retro renk paleti        │
+├─────────────────────────────────────────────────────────┤
+│  █ Parlayan Efektler                                    │
+│    Blokları sürüklerken hafif glow efektleri           │
+├─────────────────────────────────────────────────────────┤
+│  █ Modern Arayüz                                        │
+│    Koyu tema, çerçeveli arayüz, pixelated font         │
+└─────────────────────────────────────────────────────────┘
+```
+
 - **Retro 8-bit/16-bit Tema**: Atari/NES/SNES esintili görsel tasarım
 - **Göz Dostu Renkler**: Göz yormayan, yumuşatılmış retro renk paleti
 - **Parlayan Efektler**: Blokları sürüklerken hafif glow efektleri
@@ -68,17 +137,25 @@ Hedef bloğu (2x2 sarı blok) EXIT noktasına taşıyarak her seviyeyi tamamlay�
 - **Çoklu Seviye**: Farklı zorluk seviyelerinde bulmacalar
 - **Başarı Sistemi**: Her seviye için tamamlanma istatistikleri
 
-## 🎮 Kontroller
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                   🎮 KONTROLLER / CONTROLS                     ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 | Tuş/İşlem | Açıklama |
-|-----------|----------|
-| **Fare** | Blokları sürükleyip bırakarak hareket ettirin |
-| **U** | Son hamleyi geri al |
-| **R** | Bulmacayı yeniden başlat |
-| **ESC** | Ana menüye dön / Oyunu duraklat |
-| **F11** | Tam ekran modunu aç/kapa |
+|:---------:|:---------|
+| **🖱️ Fare** | Blokları sürükleyip bırakarak hareket ettirin |
+| **⌨️ U** | Son hamleyi geri al |
+| **⌨️ R** | Bulmacayı yeniden başlat |
+| **⌨️ ESC** | Ana menüye dön / Oyunu duraklat |
+| **⌨️ F11** | Tam ekran modunu aç/kapa |
 
-## 🚀 Kurulum
+```
+╔═══════════════════════════════════════════════════════════════╗
+║               🚀 KURULUM / INSTALLATION                        ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 ### Gereksinimler
 
@@ -87,29 +164,27 @@ Hedef bloğu (2x2 sarı blok) EXIT noktasına taşıyarak her seviyeyi tamamlay�
 
 ### Kurulum Adımları
 
-1. **Projeyi İndirin**
-   ```bash
-   git clone https://github.com/ness246/Klo..git
-   cd Klo.
-   ```
-   
-   Veya GitHub'dan ZIP olarak indirin.
+```bash
+# 1. Projeyi İndirin
+git clone https://github.com/ness246/Klo..git
+cd Klo.
 
-2. **Bağımlılıkları Yükleyin**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# 2. Bağımlılıkları Yükleyin
+pip install -r requirements.txt
 
-3. **Oyunu Çalıştırın**
-   ```bash
-   python main.py
-   ```
+# 3. Oyunu Çalıştırın
+python main.py
+```
 
 ### Font Dosyası (Opsiyonel)
 
 Oyun için özel pixelated font (`Bytesized.ttf`) kullanılmaktadır. Font dosyası `assets/fonts/` klasörüne yerleştirilmelidir. Eğer dosya bulunamazsa, sistem varsayılan fontu kullanılacaktır.
 
-## 📦 Proje Yapısı
+```
+╔═══════════════════════════════════════════════════════════════╗
+║            📦 PROJE YAPISI / PROJECT STRUCTURE                ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 ```
 Klo./
@@ -128,7 +203,11 @@ Klo./
     └── B-01.json
 ```
 
-## 🎯 Oyun Kuralları
+```
+╔═══════════════════════════════════════════════════════════════╗
+║              🎯 OYUN KURALLARI / GAME RULES                    ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 1. **Amaç**: Hedef bloğu (2x2 sarı "T" bloğu) EXIT noktasına taşıyın.
 2. **Hareket**: Blokları fare ile sürükleyerek hareket ettirebilirsiniz.
@@ -136,30 +215,42 @@ Klo./
 4. **Çarpışma**: Bloklar birbirinin üzerine gelemez veya tahtanın dışına çıkamaz.
 5. **Hedef**: EXIT noktası genellikle tahtanın alt kısmında, 2x2 boyutundadır.
 
-## 🎵 Müzik ve Sesler
-
-Oyun içerisinde kullanılan müzikler ve ses efektleri:
+```
+╔═══════════════════════════════════════════════════════════════╗
+║            🎵 MÜZİK VE SESLER / MUSIC & SOUNDS                ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 - **Ses Efektleri**: 8-bit temalı, programatik olarak oluşturulmuş sesler
 - **Arkaplan Müziği**: Retro temalı müzik parçaları
 - **Yapımcı Bilgisi**: Müzik yapımcıları müzik dosya isimlerinde belirtilmiştir
 
-## 🌐 Web Sitesi
-
-Projenin web sitesini ziyaret edin:
+```
+╔═══════════════════════════════════════════════════════════════╗
+║               🌐 WEB SİTESİ / WEBSITE                          ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 🔗 **[https://ness246.github.io/Klo./](https://ness246.github.io/Klo./)**
 
 Web sitesi retro 8-bit/16-bit temasıyla tasarlanmış ve projenin tüm bilgilerini içermektedir.
 
-## 🛠️ Teknoloji
+```
+╔═══════════════════════════════════════════════════════════════╗
+║              🛠️ TEKNOLOJI / TECHNOLOGY                        ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 - **Python 3.7+**: Programlama dili
 - **Pygame**: Oyun motoru ve grafik kütüphanesi
 - **JSON**: Seviye ve ayar dosyaları
 - **HTML/CSS/JS**: Web sitesi (GitHub Pages)
 
-## 📝 Geliştirme
+```
+╔═══════════════════════════════════════════════════════════════╗
+║             📝 GELİŞTİRME / DEVELOPMENT                        ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 ### Seviye Oluşturma
 
@@ -187,48 +278,65 @@ Seviyeler JSON formatında `levels/` klasöründe saklanır. Örnek format:
 4. Branch'inizi push edin (`git push origin feature/yeni-ozellik`)
 5. Pull Request oluşturun
 
-## 🐛 Bilinen Sorunlar
-
-Şu anda bilinen önemli bir sorun yoktur. Hata bulursanız lütfen [GitHub Issues](https://github.com/ness246/Klo./issues) üzerinden bildirin.
-
-## 📄 Lisans
+```
+╔═══════════════════════════════════════════════════════════════╗
+║           📄 LİSANS / LICENSE                                 ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. İstediğiniz gibi kullanabilir, değiştirebilir ve dağıtabilirsiniz.
 
-## 👨‍💻 Geliştirici
+```
+╔═══════════════════════════════════════════════════════════════╗
+║            👨‍💻 GELİŞTİRİCİ / DEVELOPER                         ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 **Ness246**
 
 - GitHub: [@ness246](https://github.com/ness246)
 - Proje: [Klo. Repository](https://github.com/ness246/Klo.)
 
-## 🙏 Teşekkürler
-
-- Klotski bulmacasının orijinal yaratıcıları
-- Pygame geliştiricileri
-- Retro oyun topluluğu
-- Müzik yapımcıları (müzik dosya isimlerinde belirtilmiştir)
-
-## 📞 İletişim
-
-Sorularınız, önerileriniz veya geri bildirimleriniz için [GitHub Issues](https://github.com/ness246/Klo./issues) kullanabilirsiniz.
-
 ---
 
 </details>
 
 <details>
-<summary><b>🇬🇧 English (Click to Expand)</b></summary>
+<summary><b>🇬🇧 <span style="color: #00ff00">████████</span> ENGLISH <span style="color: #00ff00">████████</span> (Click to Expand)</b></summary>
 
-## 📖 About
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                      📖 ABOUT                                  ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 **Klo.** is a modern interpretation of the classic Klotski puzzle that originated in the early 20th century. It's a puzzle game that combines retro 8-bit/16-bit aesthetics with eye-friendly colors and smooth gameplay.
 
 Complete each level by moving the target block (2x2 yellow block) to the EXIT point. Challenge yourself to solve with minimum moves and time!
 
-## ✨ Features
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                    ✨ FEATURES                                  ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 ### 🎨 Visual and Design
+```
+┌─────────────────────────────────────────────────────────┐
+│  █ Retro 8-bit/16-bit Theme                            │
+│    Atari/NES/SNES-inspired visual design               │
+├─────────────────────────────────────────────────────────┤
+│  █ Eye-Friendly Colors                                 │
+│    Non-straining, muted retro color palette           │
+├─────────────────────────────────────────────────────────┤
+│  █ Glow Effects                                        │
+│    Subtle glow effects when dragging blocks           │
+├─────────────────────────────────────────────────────────┤
+│  █ Modern Interface                                     │
+│    Dark theme, framed interface, pixelated font        │
+└─────────────────────────────────────────────────────────┘
+```
+
 - **Retro 8-bit/16-bit Theme**: Atari/NES/SNES-inspired visual design
 - **Eye-Friendly Colors**: Non-straining, muted retro color palette
 - **Glow Effects**: Subtle glow effects when dragging blocks
@@ -264,17 +372,25 @@ Complete each level by moving the target block (2x2 yellow block) to the EXIT po
 - **Multiple Levels**: Puzzles with different difficulty levels
 - **Achievement System**: Completion statistics for each level
 
-## 🎮 Controls
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                   🎮 CONTROLS                                  ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 | Key/Action | Description |
-|------------|-------------|
-| **Mouse** | Drag and drop blocks to move them |
-| **U** | Undo last move |
-| **R** | Restart puzzle |
-| **ESC** | Return to main menu / Pause game |
-| **F11** | Toggle fullscreen mode |
+|:----------:|:------------|
+| **🖱️ Mouse** | Drag and drop blocks to move them |
+| **⌨️ U** | Undo last move |
+| **⌨️ R** | Restart puzzle |
+| **⌨️ ESC** | Return to main menu / Pause game |
+| **⌨️ F11** | Toggle fullscreen mode |
 
-## 🚀 Installation
+```
+╔═══════════════════════════════════════════════════════════════╗
+║               🚀 INSTALLATION                                  ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 ### Requirements
 
@@ -283,29 +399,27 @@ Complete each level by moving the target block (2x2 yellow block) to the EXIT po
 
 ### Installation Steps
 
-1. **Download the Project**
-   ```bash
-   git clone https://github.com/ness246/Klo..git
-   cd Klo.
-   ```
-   
-   Or download as ZIP from GitHub.
+```bash
+# 1. Download the Project
+git clone https://github.com/ness246/Klo..git
+cd Klo.
 
-2. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# 2. Install Dependencies
+pip install -r requirements.txt
 
-3. **Run the Game**
-   ```bash
-   python main.py
-   ```
+# 3. Run the Game
+python main.py
+```
 
 ### Font File (Optional)
 
 The game uses a special pixelated font (`Bytesized.ttf`). The font file should be placed in the `assets/fonts/` folder. If the file is not found, the system default font will be used.
 
-## 📦 Project Structure
+```
+╔═══════════════════════════════════════════════════════════════╗
+║            📦 PROJECT STRUCTURE                               ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 ```
 Klo./
@@ -324,7 +438,11 @@ Klo./
     └── B-01.json
 ```
 
-## 🎯 Game Rules
+```
+╔═══════════════════════════════════════════════════════════════╗
+║              🎯 GAME RULES                                     ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 1. **Objective**: Move the target block (2x2 yellow "T" block) to the EXIT point.
 2. **Movement**: You can move blocks by dragging them with the mouse.
@@ -332,30 +450,42 @@ Klo./
 4. **Collision**: Blocks cannot overlap or go outside the board.
 5. **Target**: The EXIT point is usually at the bottom of the board, 2x2 in size.
 
-## 🎵 Music and Sounds
-
-Music and sound effects used in the game:
+```
+╔═══════════════════════════════════════════════════════════════╗
+║            🎵 MUSIC & SOUNDS                                   ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 - **Sound Effects**: 8-bit themed, programmatically generated sounds
 - **Background Music**: Retro-themed music tracks
 - **Producer Information**: Music producers are credited in music file names
 
-## 🌐 Website
-
-Visit the project website:
+```
+╔═══════════════════════════════════════════════════════════════╗
+║               🌐 WEBSITE                                       ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 🔗 **[https://ness246.github.io/Klo./](https://ness246.github.io/Klo./)**
 
 The website is designed with retro 8-bit/16-bit theme and contains all project information.
 
-## 🛠️ Technology
+```
+╔═══════════════════════════════════════════════════════════════╗
+║              🛠️ TECHNOLOGY                                    ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 - **Python 3.7+**: Programming language
 - **Pygame**: Game engine and graphics library
 - **JSON**: Level and settings files
 - **HTML/CSS/JS**: Website (GitHub Pages)
 
-## 📝 Development
+```
+╔═══════════════════════════════════════════════════════════════╗
+║             📝 DEVELOPMENT                                     ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 ### Level Creation
 
@@ -383,31 +513,24 @@ Levels are stored in JSON format in the `levels/` folder. Example format:
 4. Push your branch (`git push origin feature/new-feature`)
 5. Create a Pull Request
 
-## 🐛 Known Issues
-
-There are currently no known major issues. If you find a bug, please report it via [GitHub Issues](https://github.com/ness246/Klo./issues).
-
-## 📄 License
+```
+╔═══════════════════════════════════════════════════════════════╗
+║           📄 LICENSE                                          ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 This project is licensed under the [MIT License](LICENSE). You can use, modify, and distribute it as you wish.
 
-## 👨‍💻 Developer
+```
+╔═══════════════════════════════════════════════════════════════╗
+║            👨‍💻 DEVELOPER                                       ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 **Ness246**
 
 - GitHub: [@ness246](https://github.com/ness246)
 - Project: [Klo. Repository](https://github.com/ness246/Klo.)
-
-## 🙏 Acknowledgments
-
-- Original creators of Klotski puzzle
-- Pygame developers
-- Retro gaming community
-- Music producers (credited in music file names)
-
-## 📞 Contact
-
-You can use [GitHub Issues](https://github.com/ness246/Klo./issues) for questions, suggestions, or feedback.
 
 ---
 
@@ -417,9 +540,16 @@ You can use [GitHub Issues](https://github.com/ness246/Klo./issues) for question
 
 <div align="center">
 
-**⭐ If you like this project, don't forget to give it a star! ⭐**  
-**⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın! ⭐**
-
-Made with ❤️ and 🎮 by Ness246
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║  ⭐ If you like this project, don't forget to give it a     ║
+║     star! / Bu projeyi beğendiyseniz yıldız vermeyi           ║
+║     unutmayın! ⭐                                             ║
+║                                                               ║
+║  Made with ❤️ and 🎮 by Ness246                              ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+```
 
 </div>
