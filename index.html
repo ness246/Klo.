@@ -1906,14 +1906,31 @@
                 BOARD_WIDTH = GRID_COLS * CELL_SIZE;
                 BOARD_HEIGHT = GRID_ROWS * CELL_SIZE;
                 
+                // Set both internal resolution and CSS size
                 canvas.width = canvasSize.width;
                 canvas.height = canvasSize.height;
+                canvas.style.width = canvasSize.width + 'px';
+                canvas.style.height = canvasSize.height + 'px';
                 
-                draw();
+                // Wait a moment for canvas to update, then draw
+                setTimeout(() => {
+                    draw();
+                }, 10);
+            }
+            
+            // Initialize after DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    resizeCanvas();
+                });
+            } else {
+                // DOM already loaded
+                setTimeout(() => {
+                    resizeCanvas();
+                }, 100);
             }
             
             window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
             
             // Color palette matching the game
             const COLORS = {
@@ -2277,8 +2294,7 @@
                 }
             }, 1000);
             
-            // Initial draw
-            draw();
+            // Initial info update (draw will be called by resizeCanvas)
             updateInfo();
         })();
     </script>
