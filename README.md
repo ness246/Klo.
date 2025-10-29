@@ -9,7 +9,7 @@ Klotski bulmaca oyunu - Pygame ile geliştirilmiş modern ve eğlenceli bir puzz
 - **Modern UI**: Koyu tema, çerçeveli arayüz, renkli bloklar
 - **Sürükle-Bırak**: Blokları fare ile sürükleyerek hareket ettirin
 - **8-bit Sesler**: Nostaljik 8-bit temalı ses efektleri
-- **Arkaplan Müziği**: Ness246 tarafından hazırlanan müzik albümü
+- **Arkaplan Müziği**: Müzik albümü (yapımcılar müzik isimlerinde belirtilmiştir)
 - **Çoklu Dil**: Türkçe ve İngilizce dil desteği
 - **Tam Ekran Modu**: F11 ile tam ekran oynayın
 - **Ayarlar Menüsü**: Ses seviyesi, müzik seviyesi ve dil ayarları
@@ -55,7 +55,7 @@ klotski_pygame_styled/
 
 ## 🎵 Müzik
 
-Müzikler **Ness246** tarafından özel olarak oyun için hazırlanmıştır.
+Oyun içerisinde kullanılan müzikler, müzik dosya isimlerinde belirtilen yapımcılar tarafından hazırlanmıştır.
 
 ## 🌍 Dil Desteği
 
@@ -64,9 +64,15 @@ Müzikler **Ness246** tarafından özel olarak oyun için hazırlanmıştır.
 
 Dili ayarlar menüsünden değiştirebilirsiniz.
 
+## 🌐 Demo
+
+Projenin GitHub Pages demo sayfasını ziyaret edin:
+
+🔗 **[GitHub Pages Demo](https://ness246.github.io/Klo./)**
+
 ## 📝 Lisans
 
-Bu proje açık kaynaklıdır. İstediğiniz gibi kullanabilirsiniz.
+Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır.
 
 ---
 

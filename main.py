@@ -1045,7 +1045,12 @@ while running:
         
         # Müzik bilgisi - Sol alta
         if game.current_music:
-            music_text = f"♪ {game.current_music['name']} - DavidKBD"
+            # Müzik dosya isminden yapımcı adını çıkar (örnek: "DavidKBD - Pink Bloom Pack - 01 - Pink Bloom.ogg")
+            file_name = game.current_music.get('file', '')
+            producer = "Unknown"
+            if ' - ' in file_name:
+                producer = file_name.split(' - ')[0]
+            music_text = f"♪ {game.current_music['name']} - {producer}"
             draw_text(screen, music_text, (MARGIN + 20, SCREEN_H - 30), font)
 
         # board background
